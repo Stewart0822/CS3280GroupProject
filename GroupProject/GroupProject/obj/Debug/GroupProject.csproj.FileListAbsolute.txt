@@ -24,3 +24,27 @@ C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupP
 C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.GenerateResource.Cache
 C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.exe
 C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\bin\Debug\GroupProject.exe
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.csprojResolveAssemblyReference.cache
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\MainWindow.g.cs
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\Prodcut.g.cs
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\ProductAdd.g.cs
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\ProductEdit.g.cs
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\Search.g.cs
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\SearchWindow.g.cs
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\App.g.cs
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject_MarkupCompile.cache
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject_MarkupCompile.lref
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\MainWindow.baml
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\Prodcut.baml
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\ProductAdd.baml
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\ProductEdit.baml
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\Search.baml
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\SearchWindow.baml
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.g.resources
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.Properties.Resources.resources
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.GenerateResource.Cache
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.exe
+C:\Users\TylerSurface\Documents\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.pdb

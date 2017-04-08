@@ -31,7 +31,7 @@
                 <Label x:Name="lblIDDisplay" Content="ID:" HorizontalAlignment="Stretch" Margin="15,0,15,0" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Right"/>
                 <Label x:Name="lblDateDisplay" Content="Date:" HorizontalAlignment="Stretch" Margin="15,0,15,0" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Right"/>
                 <Label x:Name="lblProductDisplay" Content="Product:" HorizontalAlignment="Stretch" Margin="15,0,15,0" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Right"/>
-                <TextBox x:Name="txtInvoiceID" Margin="10,10,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1"/>
+                <TextBox x:Name="txtInvoiceID" Margin="10,10,10,10" IsReadOnly="True"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1"/>
                 <DatePicker Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,10,10,10" Grid.Row="2" VerticalAlignment="Stretch"/>
                 <Grid Grid.Column="1" Grid.Row="3">
                     <Grid.ColumnDefinitions>
@@ -54,9 +54,9 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btnAddInvoice" Content="Add" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-                <Button x:Name="btnEditInvoice" Content="Edit" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-                <Button x:Name="btnDeleteInvoice" Content="Delete" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+                <Button x:Name="btnAddInvoice" Content="Add" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Click="btn_add_invoice_click"/>
+                <Button x:Name="btnEditInvoice" Content="Edit" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Click="btn_edit_invoice_click"/>
+                <Button x:Name="btnDeleteInvoice" Content="Delete" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Click="btn_delete_invoice_click"/>
                 <Button x:Name="btnSearch" Content="Search" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" Click="btn_search_click"/>
                 <Button x:Name="btnProducts" Content="Products" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="4" Click="btn_product_click"/>
             </Grid>
@@ -66,7 +66,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Product 1" Grid.Column="0"/>
                 <Label Content="2" Grid.Column="1"/>
@@ -76,7 +76,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Product 2" Grid.Column="0"/>
                 <Label Content="2" Grid.Column="1"/>
@@ -86,7 +86,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Product 3" Grid.Column="0"/>
                 <Label Content="2" Grid.Column="1"/>
@@ -96,7 +96,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Product 4" Grid.Column="0"/>
                 <Label Content="2" Grid.Column="1"/>
@@ -106,7 +106,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Product 5" Grid.Column="0"/>
                 <Label Content="2" Grid.Column="1"/>
