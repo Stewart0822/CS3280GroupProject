@@ -40,6 +40,110 @@ namespace GroupProject {
     /// </summary>
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
+        
+        #line 31 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label lblIDDisplay;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 32 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label lblDateDisplay;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 33 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label lblProductDisplay;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 34 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox txtInvoiceID;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 42 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.ComboBox comboProductSelect;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 45 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox txtProductQuantity;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 46 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnAddProduct;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 57 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnAddInvoice;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 58 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnEditInvoice;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 59 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnDeleteInvoice;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 60 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnSearch;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 61 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnProducts;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 64 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.StackPanel stackPanelInvoiceProducts;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -68,6 +172,60 @@ namespace GroupProject {
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) {
+            switch (connectionId)
+            {
+            case 1:
+            this.lblIDDisplay = ((System.Windows.Controls.Label)(target));
+            return;
+            case 2:
+            this.lblDateDisplay = ((System.Windows.Controls.Label)(target));
+            return;
+            case 3:
+            this.lblProductDisplay = ((System.Windows.Controls.Label)(target));
+            return;
+            case 4:
+            this.txtInvoiceID = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 5:
+            this.comboProductSelect = ((System.Windows.Controls.ComboBox)(target));
+            return;
+            case 6:
+            this.txtProductQuantity = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 7:
+            this.btnAddProduct = ((System.Windows.Controls.Button)(target));
+            return;
+            case 8:
+            this.btnAddInvoice = ((System.Windows.Controls.Button)(target));
+            return;
+            case 9:
+            this.btnEditInvoice = ((System.Windows.Controls.Button)(target));
+            return;
+            case 10:
+            this.btnDeleteInvoice = ((System.Windows.Controls.Button)(target));
+            return;
+            case 11:
+            this.btnSearch = ((System.Windows.Controls.Button)(target));
+            
+            #line 60 "..\..\MainWindow.xaml"
+            this.btnSearch.Click += new System.Windows.RoutedEventHandler(this.btn_search_click);
+            
+            #line default
+            #line hidden
+            return;
+            case 12:
+            this.btnProducts = ((System.Windows.Controls.Button)(target));
+            
+            #line 61 "..\..\MainWindow.xaml"
+            this.btnProducts.Click += new System.Windows.RoutedEventHandler(this.btn_product_click);
+            
+            #line default
+            #line hidden
+            return;
+            case 13:
+            this.stackPanelInvoiceProducts = ((System.Windows.Controls.StackPanel)(target));
+            return;
+            }
             this._contentLoaded = true;
         }
     }
