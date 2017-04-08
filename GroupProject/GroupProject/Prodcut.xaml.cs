@@ -31,8 +31,8 @@ namespace GroupProject
         public Prodcut()
         {
             InitializeComponent();
-            wndAddProduct = new Window();
-            wndEditProduct = new Window();
+            wndAddProduct = new ProductAdd();
+            wndEditProduct = new ProductEdit();
         }
 
         /// <summary>
