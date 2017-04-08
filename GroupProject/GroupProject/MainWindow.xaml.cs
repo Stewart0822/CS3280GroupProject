@@ -24,5 +24,15 @@ namespace GroupProject
         {
             InitializeComponent();
         }
+
+        private void btn_search_click(object sender, RoutedEventArgs e)
+        {
+            new SearchWindow().ShowDialog();
+        }
+
+        private void btn_product_click(object sender, RoutedEventArgs e)
+        {
+            new Prodcut().ShowDialog();
+        }
     }
 }
