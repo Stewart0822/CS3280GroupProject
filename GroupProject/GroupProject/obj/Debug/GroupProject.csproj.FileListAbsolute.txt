@@ -1,1 +1,2 @@
 c:\users\wparkinson\documents\visual studio 2015\Projects\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
+C:\Users\npreszler\Source\Repos\CS3280GroupProject\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
