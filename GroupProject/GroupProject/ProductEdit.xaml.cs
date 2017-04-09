@@ -23,10 +23,24 @@ namespace GroupProject
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// handles the onClick event of the submit button on wndProductEdit 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEditSubmit_Click(object sender, RoutedEventArgs e)
         {
             //On Submit the current data in the text boxes will be updated in the database via _id
+        }
+
+        /// <summary>
+        /// handles the onClick event of the cancel button on wndProductEdit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEditCancel_Click(object sender, RoutedEventArgs e)
+        {
+            wndEditProduct.Hide();//hides the window onClick of cancel
         }
     }
 }
