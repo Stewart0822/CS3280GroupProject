@@ -14,6 +14,6 @@
         <Label x:Name="lblEditDesc" Content="Description" HorizontalAlignment="Left" Margin="26,70,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblEditPrice" Content="Price" HorizontalAlignment="Left" Margin="26,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.53,0.438"/>
         <Button x:Name="btnEditSubmit" Content="Submit" HorizontalAlignment="Left" Margin="46,193,0,0" VerticalAlignment="Top" Width="75" Click="btnEditSubmit_Click"/>
-        <Button x:Name="btnEditCancel" Content="Cancel" HorizontalAlignment="Left" Margin="168,193,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnEditCancel" Content="Cancel" HorizontalAlignment="Left" Margin="168,193,0,0" VerticalAlignment="Top" Width="75" Click="btnEditCancel_Click"/>
     </Grid>
 </Window>
