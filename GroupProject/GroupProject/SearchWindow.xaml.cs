@@ -19,9 +19,72 @@ namespace GroupProject
     /// </summary>
     public partial class SearchWindow : Window
     {
+        /// <summary>
+        /// The SearchWindow constructor.
+        /// </summary>
         public SearchWindow()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Closes the window and makes sure the selected invoice's ID# is returned to the Main Window.
+        /// </summary>
+        /// <param name="sender">The Select button.</param>
+        /// <param name="e">The RoutedEventArgs.</param>
+        private void btnSelect_Click(object sender, RoutedEventArgs e)
+        {
+            //Close the window and make sure the selected invoice's ID# is returned to the Main Window.
+        }
+
+        /// <summary>
+        /// Closes the window. Doesn't return an invoice ID# to the main window.
+        /// </summary>
+        /// <param name="sender">The Cancel button.</param>
+        /// <param name="e">The RoutedEventArgs.</param>
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            //Close the window. Don't return an invoice ID# to the main window.
+        }
+
+        /// <summary>
+        /// Resets all search filters to blank.
+        /// </summary>
+        /// <param name="sender">The Clear Filters button.</param>
+        /// <param name="e">The RoutedEventArgs.</param>
+        private void btnClearFilters_Click(object sender, RoutedEventArgs e)
+        {
+            //Reset all search filters to blank.
+        }
+
+        /// <summary>
+        /// Called on SelectionChanged event for the ID# ComboBox in the search filters. Updates the DataGrid.
+        /// </summary>
+        /// <param name="sender">The ID# ComboBox.</param>
+        /// <param name="e">The SelectionChangedEventArgs.</param>
+        private void cbIDNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Update the DataGrid displaying invoices.
+        }
+
+        /// <summary>
+        /// Called on SelectedDateChanged event for the date picker in the search filters. Updates the DataGrid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Update the DataGrid displaying invoices.
+        }
+
+        /// <summary>
+        /// Called on SelectionChanged event for the Invoice $ Total ComboBox in the search filters. Updates the DataGrid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbInvoiceTotal_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Update the DataGrid displaying invoices.
         }
     }
 }

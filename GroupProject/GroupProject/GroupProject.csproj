@@ -55,17 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Prodcut.xaml.cs">
-      <DependentUpon>Prodcut.xaml</DependentUpon>
+    <Compile Include="Product.xaml.cs">
+      <DependentUpon>Product.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProductAdd.xaml.cs">
       <DependentUpon>ProductAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProductEdit.xaml.cs">
       <DependentUpon>ProductEdit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Search.xaml.cs">
-      <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
     <Compile Include="SearchWindow.xaml.cs">
       <DependentUpon>SearchWindow.xaml</DependentUpon>
@@ -83,7 +80,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Prodcut.xaml">
+    <Page Include="Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,10 +89,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProductEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

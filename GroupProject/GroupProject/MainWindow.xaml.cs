@@ -37,7 +37,7 @@ namespace GroupProject
             //no data will need to be passed between these two objects, but both should have access to the static manger
             //class that will hold the datastructures with the invoice and product data as well as 
             //comunicate with the db class
-            new Prodcut().ShowDialog();
+            new Product().ShowDialog();
         }
 
         private void btn_add_invoice_click(object sender, RoutedEventArgs e)
