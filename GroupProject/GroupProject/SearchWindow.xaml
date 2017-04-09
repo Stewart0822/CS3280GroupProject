@@ -5,27 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject"
         mc:Ignorable="d"
-        Title="Invoice Search" Height="440.122" Width="753.098">
+        Title="Invoice Search" Height="440.122" Width="714.453">
     <Grid>
         <GroupBox x:Name="gbSearchFilters" Header="Search Filters" HorizontalAlignment="Left" Height="85" Margin="10,10,0,0" VerticalAlignment="Top" Width="601">
-            <Grid HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Left" Margin="10,10,-2.2,0" VerticalAlignment="Top" Width="581">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="52*"/>
                 </Grid.ColumnDefinitions>
                 <Label x:Name="lblInvoiceID" Content="Invoice ID#:" HorizontalAlignment="Left" Margin="11,7,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                <ComboBox x:Name="cbIDNumber" HorizontalAlignment="Left" Margin="37.9,10,0,0" VerticalAlignment="Top" Width="115" Grid.Column="1"/>
+                <ComboBox x:Name="cbIDNumber" HorizontalAlignment="Left" Margin="37.9,10,0,0" VerticalAlignment="Top" Width="115" Grid.Column="1" SelectionChanged="cbIDNumber_SelectionChanged"/>
                 <Label x:Name="lblInvoiceDate" Content="Invoice Date:" HorizontalAlignment="Left" Margin="157.9,7,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                <DatePicker HorizontalAlignment="Left" Margin="240.9,8,0,0" VerticalAlignment="Top" Width="103" Grid.Column="1"/>
+                <DatePicker HorizontalAlignment="Left" Margin="240.9,8,0,0" VerticalAlignment="Top" Width="103" Grid.Column="1" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
                 <Label x:Name="lblInvoiceTotal" Content="Invoice Total:" HorizontalAlignment="Left" Margin="348.9,7,0,0" VerticalAlignment="Top" Width="84" Grid.Column="1"/>
-                <ComboBox x:Name="cbInvoiceTotal" HorizontalAlignment="Left" Margin="437.9,10,0,0" VerticalAlignment="Top" Width="81" Grid.Column="1"/>
+                <ComboBox x:Name="cbInvoiceTotal" HorizontalAlignment="Left" Margin="437.9,10,0,0" VerticalAlignment="Top" Width="81" Grid.Column="1" SelectionChanged="cbInvoiceTotal_SelectionChanged"/>
             </Grid>
         </GroupBox>
-        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="616,46,0,0" VerticalAlignment="Top" Width="45"/>
-        <Button x:Name="btnClearFilters" Content="Clear Filters" HorizontalAlignment="Left" Margin="666,46,0,0" VerticalAlignment="Top" Width="70"/>
+        <Button x:Name="btnClearFilters" Content="Clear Filters" HorizontalAlignment="Left" Margin="619,47,0,0" VerticalAlignment="Top" Width="70" Click="btnClearFilters_Click"/>
         <DataGrid x:Name="dgResults" HorizontalAlignment="Left" Height="262" Margin="42,100,0,0" VerticalAlignment="Top" Width="460"/>
-        <Button x:Name="btnSelect" Content="Select" HorizontalAlignment="Left" Height="24" Margin="538,338,0,0" VerticalAlignment="Top" Width="73"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Height="24" Margin="616,338,0,0" VerticalAlignment="Top" Width="73"/>
+        <Button x:Name="btnSelect" Content="Select" HorizontalAlignment="Left" Height="24" Margin="538,338,0,0" VerticalAlignment="Top" Width="73" Click="btnSelect_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Height="24" Margin="616,338,0,0" VerticalAlignment="Top" Width="73" Click="btnCancel_Click"/>
 
     </Grid>
 </Window>
