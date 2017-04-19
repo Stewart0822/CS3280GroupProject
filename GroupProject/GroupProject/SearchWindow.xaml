@@ -16,7 +16,7 @@
                 <Label x:Name="lblInvoiceID" Content="Invoice ID#:" HorizontalAlignment="Left" Margin="11,7,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                 <ComboBox x:Name="cbIDNumber" HorizontalAlignment="Left" Margin="37.9,10,0,0" VerticalAlignment="Top" Width="115" Grid.Column="1" SelectionChanged="cbIDNumber_SelectionChanged"/>
                 <Label x:Name="lblInvoiceDate" Content="Invoice Date:" HorizontalAlignment="Left" Margin="157.9,7,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                <DatePicker HorizontalAlignment="Left" Margin="240.9,8,0,0" VerticalAlignment="Top" Width="103" Grid.Column="1" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+                <DatePicker x:Name="dpInvoiceDate" HorizontalAlignment="Left" Margin="240.9,8,0,0" VerticalAlignment="Top" Width="103" Grid.Column="1" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
                 <Label x:Name="lblInvoiceTotal" Content="Invoice Total:" HorizontalAlignment="Left" Margin="348.9,7,0,0" VerticalAlignment="Top" Width="84" Grid.Column="1"/>
                 <ComboBox x:Name="cbInvoiceTotal" HorizontalAlignment="Left" Margin="437.9,10,0,0" VerticalAlignment="Top" Width="81" Grid.Column="1" SelectionChanged="cbInvoiceTotal_SelectionChanged"/>
             </Grid>
