@@ -55,14 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Product.xaml.cs">
-      <DependentUpon>Product.xaml</DependentUpon>
+    <Compile Include="BusCtrl.cs" />
+    <Compile Include="Invoice.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductWindow.xaml.cs">
+      <DependentUpon>ProductWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProductAdd.xaml.cs">
-      <DependentUpon>ProductAdd.xaml</DependentUpon>
+    <Compile Include="ProductAddWindow.xaml.cs">
+      <DependentUpon>ProductAddWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProductEdit.xaml.cs">
-      <DependentUpon>ProductEdit.xaml</DependentUpon>
+    <Compile Include="ProductEditWindow.xaml.cs">
+      <DependentUpon>ProductEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SearchWindow.xaml.cs">
       <DependentUpon>SearchWindow.xaml</DependentUpon>
@@ -80,15 +83,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Product.xaml">
+    <Page Include="ProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProductAdd.xaml">
+    <Page Include="ProductAddWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProductEdit.xaml">
+    <Page Include="ProductEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
