@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,9 +43,9 @@ namespace GroupProject
 
         //---------------------Search stuff---------------------------
 
-        public static void getInvoiceList(int id, DateTime date, double total)
+        public static DataSet getInvoiceList(int id, DateTime date, double total)
         {
-
+            return null;
         }
 
         //---------------------Main Window stuff----------------------

@@ -94,5 +94,29 @@ namespace GroupProject
             base.ShowDialog();
             return invoiceID;
         }
+
+        private void updateResultsGrid()
+        {
+            //Set search variables
+            int invoiceID;
+            DateTime invoiceDate;
+            double invoiceCharge;
+
+            if (cbIDNumber.SelectedIndex != -1)
+            {
+                invoiceID = (int)cbIDNumber.SelectedItem;
+            }
+
+            invoiceDate = dpInvoiceDate.SelectedDate;
+
+            if (cbInvoiceTotal.SelectedIndex != -1)
+            {
+                invoiceCharge = (int)cbInvoiceTotal.SelectedItem;
+            }
+
+
+            //bind to results data grid
+            dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge);
+        }
     }
 }
