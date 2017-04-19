@@ -19,6 +19,8 @@ namespace GroupProject
     /// </summary>
     public partial class SearchWindow : Window
     {
+        int invoiceID = -1;
+
         /// <summary>
         /// The SearchWindow constructor.
         /// </summary>
@@ -85,6 +87,12 @@ namespace GroupProject
         private void cbInvoiceTotal_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Update the DataGrid displaying invoices.
+        }
+
+        public new int ShowDialog()
+        {
+            base.ShowDialog();
+            return invoiceID;
         }
     }
 }

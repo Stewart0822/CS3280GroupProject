@@ -17,7 +17,7 @@ namespace GroupProject
     /// <summary>
     /// Interaction logic for Prodcut.xaml
     /// </summary>
-    public partial class Product : Window
+    public partial class ProductWindow : Window
     {
         /// <summary>
         /// New window that that allows user to enter data for new product item
@@ -28,11 +28,11 @@ namespace GroupProject
         /// </summary>
         Window wndEditProduct;
 
-        public Product()
+        public ProductWindow()
         {
             InitializeComponent();
-            wndAddProduct = new ProductAdd();
-            wndEditProduct = new ProductEdit();
+            wndAddProduct = new ProductAddWindow();
+            wndEditProduct = new ProductEditWindow();
         }
 
         /// <summary>
