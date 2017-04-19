@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\
+C:\Users\npreszler\Documents\Spring 2017\CS 3280C#\Assignments\GroupProject\GroupProject\GroupProject\obj\Debug\
 GroupProject
 none
 false
 DEBUG;TRACE
-C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupProject\GroupProject\App.xaml
-6-1799242800
+C:\Users\npreszler\Documents\Spring 2017\CS 3280C#\Assignments\GroupProject\GroupProject\GroupProject\App.xaml
+5-1561167085
 
-14-628018757
+18275725260
 13738642453
-MainWindow.xaml;Prodcut.xaml;ProductAdd.xaml;ProductEdit.xaml;Search.xaml;SearchWindow.xaml;
+MainWindow.xaml;ProductWindow.xaml;ProductAddWindow.xaml;ProductEditWindow.xaml;SearchWindow.xaml;
 
-False
+True
 
