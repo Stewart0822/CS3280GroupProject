@@ -95,3 +95,25 @@ C:\Users\npreszler\Documents\Spring 2017\CS 3280C#\Assignments\GroupProject\Grou
 C:\Users\npreszler\Documents\Spring 2017\CS 3280C#\Assignments\GroupProject\GroupProject\GroupProject\obj\Debug\ProductAddWindow.baml
 C:\Users\npreszler\Documents\Spring 2017\CS 3280C#\Assignments\GroupProject\GroupProject\GroupProject\obj\Debug\ProductEditWindow.baml
 E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\bin\Debug\GroupProject.exe
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.csprojResolveAssemblyReference.cache
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\MainWindow.g.cs
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\ProductWindow.g.cs
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\ProductAddWindow.g.cs
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\ProductEditWindow.g.cs
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\SearchWindow.g.cs
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\App.g.cs
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject_MarkupCompile.cache
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject_MarkupCompile.lref
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\App.baml
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\MainWindow.baml
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\ProductWindow.baml
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\ProductAddWindow.baml
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\ProductEditWindow.baml
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\SearchWindow.baml
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.g.resources
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.Properties.Resources.resources
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.GenerateResource.Cache
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.exe
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.pdb

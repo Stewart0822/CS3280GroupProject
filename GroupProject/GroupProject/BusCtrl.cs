@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Reflection;
@@ -42,6 +43,7 @@ namespace GroupProject
 
         }
 
+        #region Search Methods
         //---------------------Search stuff---------------------------
 
         public static DataSet getInvoiceList(int id, DateTime? date, double total)
@@ -54,7 +56,7 @@ namespace GroupProject
                 {
                     if (total == -1.0)      //no id, no date, no total
                     {
-                        return null;
+                        query = SQLStrings.getAllInvoices();
                     }
                     else                    //no id, no date, total
                     {
@@ -101,6 +103,56 @@ namespace GroupProject
 
             return dataAccess.ExecuteSQLStatement(query, ref numRows);
         }
+
+        public static BindingList<int> getInvoiceIDs()
+        {
+            try
+            {
+                int numRows = 0;
+
+                DataSet ds = dataAccess.ExecuteSQLStatement(SQLStrings.getAllInvoiceIDs(), ref numRows);
+
+                BindingList<int> list = new BindingList<int>();
+
+                for (int i = 0; i < numRows; i++)
+                {
+                    int id = Int32.Parse(ds.Tables[0].Rows[i][0].ToString());
+                    list.Add(id);
+                }
+
+                return list;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static BindingList<double> getInvoiceTotals()
+        {
+            try
+            {
+                int numRows = 0;
+
+                DataSet ds = dataAccess.ExecuteSQLStatement(SQLStrings.getAllInvoiceTotals(), ref numRows);
+
+                BindingList<double> list = new BindingList<double>();
+
+                for (int i = 0; i < numRows; i++)
+                {
+                    double total = Double.Parse(ds.Tables[0].Rows[i][0].ToString());
+                    list.Add(total);
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        #endregion
 
         //---------------------Main Window stuff----------------------
 

@@ -28,6 +28,8 @@ namespace GroupProject
         public SearchWindow()
         {
             InitializeComponent();
+            populateFilters();
+            updateResultsGrid();
         }
 
         /// <summary>
@@ -62,6 +64,8 @@ namespace GroupProject
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             //Close the window. Don't return an invoice ID# to the main window.
+            invoiceID = -1;
+            Hide();
         }
 
         /// <summary>
@@ -125,6 +129,15 @@ namespace GroupProject
 
             //bind to results data grid
             dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge).Tables[0].DefaultView;
+        }
+
+        private void populateFilters()
+        {
+            //populate invoice ID combobox
+            cbIDNumber.ItemsSource = BusCtrl.getInvoiceIDs();
+
+            //populate invoice Total combobox
+            cbInvoiceTotal.ItemsSource = BusCtrl.getInvoiceTotals();
         }
     }
 }
