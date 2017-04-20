@@ -44,8 +44,17 @@ namespace GroupProject
         }
 
         #region Search Methods
-        //---------------------Search stuff---------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------Begin Search Methods-------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Gets a DataSet of all invoices based on the search filters.
+        /// </summary>
+        /// <param name="id">Invoice ID.</param>
+        /// <param name="date">Invoice Date.</param>
+        /// <param name="total">Invoice Total.</param>
+        /// <returns>A DataSet of all invoices based on the search filters.</returns>
         public static DataSet getInvoiceList(int id, DateTime? date, double total)
         {
             int numRows = 0;
@@ -104,6 +113,10 @@ namespace GroupProject
             return dataAccess.ExecuteSQLStatement(query, ref numRows);
         }
 
+        /// <summary>
+        /// Gets a list of all invoice IDs.
+        /// </summary>
+        /// <returns>A list of all invoice IDs.</returns>
         public static BindingList<int> getInvoiceIDs()
         {
             try
@@ -128,6 +141,10 @@ namespace GroupProject
             }
         }
 
+        /// <summary>
+        /// Gets a list of all invoice totals.
+        /// </summary>
+        /// <returns>A list of all invoice totals.</returns>
         public static BindingList<double> getInvoiceTotals()
         {
             try
@@ -152,6 +169,9 @@ namespace GroupProject
             }
         }
 
+        //--------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------End Search Methods---------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------
         #endregion
 
         //---------------------Main Window stuff----------------------

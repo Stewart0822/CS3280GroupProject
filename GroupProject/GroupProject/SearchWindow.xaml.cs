@@ -114,12 +114,19 @@ namespace GroupProject
             updateResultsGrid();
         }
 
+        /// <summary>
+        /// Overwritten ShowDialog method that returns the ID of the selected invoice.
+        /// </summary>
+        /// <returns>The ID of the selected invoice, or -1 if nothing was selected.</returns>
         public new int ShowDialog()
         {
             base.ShowDialog();
             return invoiceID;
         }
 
+        /// <summary>
+        /// Private method to update the datagrid based on the value of the search filters.
+        /// </summary>
         private void updateResultsGrid()
         {
             //Set search variables
@@ -131,6 +138,9 @@ namespace GroupProject
             dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge).Tables[0].DefaultView;
         }
 
+        /// <summary>
+        /// Private method to populate the search filters.
+        /// </summary>
         private void populateFilters()
         {
             //populate invoice ID combobox
