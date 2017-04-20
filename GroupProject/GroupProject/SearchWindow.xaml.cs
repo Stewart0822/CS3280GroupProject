@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,21 +40,28 @@ namespace GroupProject
         /// <param name="e">The RoutedEventArgs.</param>
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
-            //Close the window and make sure the selected invoice's ID# is returned to the Main Window.
-            if (dgResults == null )
+            try
             {
-                invoiceID = -1;
-                return;
-            }
+                if (dgResults == null)
+                {
+                    invoiceID = -1;
+                    return;
+                }
 
-            if (dgResults.SelectedIndex == -1)
+                if (dgResults.SelectedIndex == -1)
+                {
+                    invoiceID = -1;
+                    return;
+                }
+
+                invoiceID = Int32.Parse(((DataRowView)dgResults.SelectedItem)[0].ToString());
+                Hide();
+            }
+            catch (System.Exception ex)
             {
-                invoiceID = -1;
-                return;
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
-
-            invoiceID = Int32.Parse(((DataRowView)dgResults.SelectedItem)[0].ToString());
-            Hide();
         }
 
         /// <summary>
@@ -63,9 +71,17 @@ namespace GroupProject
         /// <param name="e">The RoutedEventArgs.</param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            //Close the window. Don't return an invoice ID# to the main window.
-            invoiceID = -1;
-            Hide();
+            try
+            {
+                //Close the window. Don't return an invoice ID# to the main window.
+                invoiceID = -1;
+                Hide();
+            }
+            catch (System.Exception ex)
+            {
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -75,10 +91,18 @@ namespace GroupProject
         /// <param name="e">The RoutedEventArgs.</param>
         private void btnClearFilters_Click(object sender, RoutedEventArgs e)
         {
-            //Reset all search filters to blank.
-            cbIDNumber.SelectedIndex = -1;
-            dpInvoiceDate.SelectedDate = null;
-            cbInvoiceTotal.SelectedIndex = -1;
+            try
+            {
+                //Reset all search filters to blank.
+                cbIDNumber.SelectedIndex = -1;
+                dpInvoiceDate.SelectedDate = null;
+                cbInvoiceTotal.SelectedIndex = -1;
+            }
+            catch (System.Exception ex)
+            {
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -88,8 +112,16 @@ namespace GroupProject
         /// <param name="e">The SelectionChangedEventArgs.</param>
         private void cbIDNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Update the DataGrid displaying invoices.
-            updateResultsGrid();
+            try
+            {
+                //Update the DataGrid displaying invoices.
+                updateResultsGrid();
+            }
+            catch (System.Exception ex)
+            {
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -99,8 +131,16 @@ namespace GroupProject
         /// <param name="e"></param>
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Update the DataGrid displaying invoices.
-            updateResultsGrid();
+            try
+            {
+                //Update the DataGrid displaying invoices.
+                updateResultsGrid();
+            }
+            catch (System.Exception ex)
+            {
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -110,8 +150,16 @@ namespace GroupProject
         /// <param name="e"></param>
         private void cbInvoiceTotal_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Update the DataGrid displaying invoices.
-            updateResultsGrid();
+            try
+            {
+                //Update the DataGrid displaying invoices.
+                updateResultsGrid();
+            }
+            catch (System.Exception ex)
+            {
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -129,13 +177,21 @@ namespace GroupProject
         /// </summary>
         private void updateResultsGrid()
         {
-            //Set search variables
-            int invoiceID = cbIDNumber.SelectedIndex == -1 ? cbIDNumber.SelectedIndex : (int)cbIDNumber.SelectedItem;
-            DateTime? invoiceDate = dpInvoiceDate.SelectedDate;
-            double invoiceCharge = cbInvoiceTotal.SelectedIndex == -1 ? cbInvoiceTotal.SelectedIndex : (double)cbInvoiceTotal.SelectedItem;
+            try
+            {
+                //Set search variables
+                int invoiceID = cbIDNumber.SelectedIndex == -1 ? cbIDNumber.SelectedIndex : (int)cbIDNumber.SelectedItem;
+                DateTime? invoiceDate = dpInvoiceDate.SelectedDate;
+                double invoiceCharge = cbInvoiceTotal.SelectedIndex == -1 ? cbInvoiceTotal.SelectedIndex : (double)cbInvoiceTotal.SelectedItem;
 
-            //bind to results data grid
-            dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge).Tables[0].DefaultView;
+                //bind to results data grid
+                dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge).Tables[0].DefaultView;
+            }
+            catch (System.Exception ex)
+            {
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
         }
 
         /// <summary>
@@ -143,11 +199,39 @@ namespace GroupProject
         /// </summary>
         private void populateFilters()
         {
-            //populate invoice ID combobox
-            cbIDNumber.ItemsSource = BusCtrl.getInvoiceIDs();
+            try
+            {
+                //populate invoice ID combobox
+                cbIDNumber.ItemsSource = BusCtrl.getInvoiceIDs();
 
-            //populate invoice Total combobox
-            cbInvoiceTotal.ItemsSource = BusCtrl.getInvoiceTotals();
+                //populate invoice Total combobox
+                cbInvoiceTotal.ItemsSource = BusCtrl.getInvoiceTotals();
+            }
+            catch (System.Exception ex)
+            {
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+
+
+        }
+
+        /// <summary>
+        /// Exception handler that shows the error.
+        /// </summary>
+        /// <param name="sClass">the class</param>
+        /// <param name="sMethod">the method</param>
+        /// <param name="sMessage">the error message</param>
+        private void HandleError(string sClass, string sMethod, string sMessage)
+        {
+            try
+            {
+                MessageBox.Show(sClass + "." + sMethod + " -> " + sMessage);
+            }
+            catch (System.Exception ex)
+            {
+                System.IO.File.AppendAllText("C:\\Error.txt", Environment.NewLine + "HandleError Exception: " + ex.Message);
+            }
         }
     }
 }

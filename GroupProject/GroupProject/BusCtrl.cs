@@ -20,11 +20,6 @@ namespace GroupProject
         
         //----------------------Product stuff------------------------
 
-        public static void getProductList()
-        {
-
-        }
-
         public static List<Product> getProductsByInvoice(int invoiceID)
         {
             return null;
