@@ -6,7 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using DataAccessPoint;
+using GroupProject;
 
 namespace GroupProject
 {
@@ -20,10 +21,10 @@ namespace GroupProject
         
         //----------------------Product stuff------------------------
 
-        public static void getProductList()
-        {
+        //public static void getProductList()
+        //{
 
-        }
+        //}
 
         public static List<Product> getProductsByInvoice(int invoiceID)
         {
@@ -79,6 +80,16 @@ namespace GroupProject
                 return false;
             else
                 return true;
+        }
+        /// <summary>
+        /// returns a DataSet of all item from the ItemDesc table
+        /// </summary>
+        /// <param name="iRowCount"></param>
+        /// <returns></returns>
+        public static DataSet getProductDataSet(ref int iRowCount)
+        {
+            DataSet ds = new DataSet();
+            return ds = dataAccess.ExecuteSQLStatement(SQLStrings.getAllProducts(), ref iRowCount);
         }
 
         #region Search Methods
@@ -303,13 +314,4 @@ namespace GroupProject
     }
 }
 
-        /// <summary>
-        /// returns a DataSet of all item from the ItemDesc table
-        /// </summary>
-        /// <param name="iRowCount"></param>
-        /// <returns></returns>
-        public static DataSet getProductDataSet(ref int iRowCount)
-        {
-            DataSet ds = new DataSet();
-            return ds = dataAccess.ExecuteSQLStatement(SQLStrings.getAllProducts(), ref iRowCount);            
-        }
+        

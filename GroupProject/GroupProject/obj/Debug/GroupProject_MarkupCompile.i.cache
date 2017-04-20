@@ -1,20 +1,20 @@
-﻿GroupProject
-
-
-winexe
-C#
-.cs
-C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\
-GroupProject
-none
-false
-DEBUG;TRACE
-C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupProject\GroupProject\App.xaml
-5-1561167085
-1-1904108712
-191211810795
-13738642453
-MainWindow.xaml;ProductWindow.xaml;ProductAddWindow.xaml;ProductEditWindow.xaml;SearchWindow.xaml;
-
-False
-
+﻿GroupProject
+
+
+winexe
+C#
+.cs
+C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\
+GroupProject
+none
+false
+DEBUG;TRACE
+C:\Users\A&M Stewart\Documents\WSU\CS 3280\Assignments\CS3280GroupProject\GroupProject\GroupProject\App.xaml
+5-1561167085
+1-1904108712
+191211810795
+13738642453
+MainWindow.xaml;ProductWindow.xaml;ProductAddWindow.xaml;ProductEditWindow.xaml;SearchWindow.xaml;
+
+True
+
