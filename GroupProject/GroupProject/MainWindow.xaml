@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -32,18 +32,16 @@
                 <Label x:Name="lblDateDisplay" Content="Date:" HorizontalAlignment="Stretch" Margin="15,0,15,0" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Right"/>
                 <Label x:Name="lblProductDisplay" Content="Product:" HorizontalAlignment="Stretch" Margin="15,0,15,0" VerticalAlignment="Center" Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Right"/>
                 <TextBox x:Name="txtInvoiceID" Margin="10,10,10,10" IsReadOnly="True"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1"/>
-                <DatePicker Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,10,10,10" Grid.Row="2" VerticalAlignment="Stretch"/>
+                <DatePicker x:Name="DatePickerDate" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,10,10,10" Grid.Row="2" VerticalAlignment="Stretch"/>
                 <Grid Grid.Column="1" Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ComboBox x:Name ="comboProductSelect" Grid.Column="0" Grid.Row="3" Margin="10,10,10,10">
                         <Label Content="Products gen here"/>
                     </ComboBox>
-                    <TextBox x:Name="txtProductQuantity" Margin="10,10,10,10" Grid.Column="1"/>
-                    <Button x:Name="btnAddProduct" Content="+" Margin="10,10,10,10" Grid.Column="2"/>
+                    <Button x:Name="btnAddProduct" Content="+" Margin="10,10,10,10" Grid.Column="1" Click="btnAddProduct_Click"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1">
@@ -53,12 +51,14 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btnAddInvoice" Content="Add" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Click="btn_add_invoice_click"/>
-                <Button x:Name="btnEditInvoice" Content="Edit" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Click="btn_edit_invoice_click"/>
-                <Button x:Name="btnDeleteInvoice" Content="Delete" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Click="btn_delete_invoice_click"/>
-                <Button x:Name="btnSearch" Content="Search" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" Click="btn_search_click"/>
-                <Button x:Name="btnProducts" Content="Products" Margin="10,10,10,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="4" Click="btn_product_click"/>
+                <Button x:Name="btnAddInvoice" Content="Add" Margin="5,10,5,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Click="btn_add_invoice_click"/>
+                <Button x:Name="btnEditInvoice" Content="Edit" Margin="5,10,5,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Click="btn_edit_invoice_click"/>
+                <Button x:Name="btnDeleteInvoice" Content="Delete" Margin="5,10,5,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Click="btn_delete_invoice_click"/>
+                <Button x:Name="btnSearch" Content="Search" Margin="5,10,5,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" Click="btn_search_click"/>
+                <Button x:Name="btnProducts" Content="Products" Margin="5,10,5,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="4" Click="btn_product_click"/>
+                <Button x:Name="btnClearForm" Content="Clear" Margin="5,10,5,10" VerticalAlignment="Center" Grid.Row="1" Grid.Column="5" Click="btnClear_Click"/>
             </Grid>
         </Grid>
         <StackPanel x:Name="stackPanelInvoiceProducts" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,10,10,10" Grid.Column="1">

@@ -25,7 +25,30 @@ namespace GroupProject
         {
             return "SELECT * FROM Invoices WHERE InvoiceDate = #" + date + "#";
         }
-        
+        public static string getInvoice(string date, double total)
+        {
+            return "SELECT * FROM Invoices WHERE InvoiceDate = #" + date + "# AND TotalCharge = " + total;
+        }
+        public static string getInvoiceByIDTotal(int id, double total)
+        {
+            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + " AND TotalCharge = " + total;
+        }
+        public static string getInvoiceByIDDate(int id, string date)
+        {
+            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + " AND InvoiceDate = #" + date +"#";
+        }
+        public static string getInvoiceByIDDateTotal(int id, string date, double total)
+        {
+            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + " AND InvoiceDate = #" + date + "# AND TotalCharge = " + total;
+        }
+        public static string getAllInvoiceIDs()
+        {
+            return "SELECT InvoiceNum FROM Invoices";
+        }
+        public static string getAllInvoiceTotals()
+        {
+            return "SELECT TotalCharge FROM Invoices";
+        }
         #endregion
         #region InvoiceCommands
         public static string insertInvoice(string date, double total)
@@ -67,11 +90,11 @@ namespace GroupProject
         }
         public static string getLineItemsForInvoice(int invoiceId)
         {
-            return "SELECT * FROM LineItems WHERE InvoiceNum = " + invoiceId;
+            return "SELECT LI.InvoiceNum, LI.ItemCode, ID.ItemDesc, ID.Cost FROM LineItems LI INNER JOIN ItemDesc ID ON LI.ItemCode = ID.ItemCode  WHERE InvoiceNum = " + invoiceId;
         }
-        public static string insertLineItem(int invoiceId, string ItemCode, int LineNumber)
+        public static string insertLineItem(int invoiceId, string ItemCode)
         {
-            return "INSERT INTO LineItems(invoiceNum,LineItemNum,ItemCode) VALUES (" + invoiceId + "," + LineNumber + ",'" + ItemCode + "')";
+            return "INSERT INTO LineItems(invoiceNum,ItemCode) VALUES (" + invoiceId  + ",'" + ItemCode + "')";
         }
         public static string removeLineItem(int lineNumber)
         {

@@ -11,6 +11,13 @@ namespace GroupProject
         private int _id;
         private DateTime _date;
         private double _total_charge;
+        public List<Product> products { get; internal set; }
+
+        public Invoice()
+        {
+            products = new List<Product>();
+            _date = DateTime.Today;
+        }
 
         public int ID
         {

@@ -29,5 +29,9 @@ namespace GroupProject
             get { return _product_cost; }
             set { _product_cost = value; }
         }
+        public override string ToString()
+        {
+            return _product_description + "($" + _product_cost + ")" ;
+        }
     }
 }
