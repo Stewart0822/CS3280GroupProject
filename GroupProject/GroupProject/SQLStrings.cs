@@ -69,21 +69,30 @@ namespace GroupProject
         {
             return "SELECT * FROM ItemDesc";
         }
-        public static string insertProduct(string ItemCode, string ItemDesc, double itemCost)
+        public static string checkProductExists(string s)
         {
-            return "INSERT INTO itemDesc(ItemCode,ItemDesc,Cost) VALUES(" + ItemCode +"," + ItemDesc + "," + itemCost + ")";
+            return "SELECT * FROM ItemDesc WHERE ItemCode = '" + s + "'";
         }
-        public static string updateProduct(string ItemCode, string ItemDesc, double itemCost)
+        public static string insertProduct(string ItemCode, string ItemDesc, string ItemCost)
         {
-            return "UPDATE itemDesc SET ItemDesc = '" + ItemDesc + "', Cost = " + itemCost + ")";
+            return "INSERT INTO ItemDesc(ItemCode,ItemDesc,Cost) VALUES(" + "'"+ ItemCode +"', '" + ItemDesc + "', '" + ItemCost + "'" + ")";
         }
-        public static string deleteProduct(string itemCode)
+        public static string updateProductItemDesc(string ItemCode, string ItemDesc, string itemCost)
         {
-            return "DELETE FROM ItemDesc WHERE ItemCode = '" + itemCode + "'";
+            return "UPDATE ItemDesc SET ItemDesc = '" + ItemDesc + "', Cost = '" + itemCost + "' WHERE ItemCode = '" + ItemCode + "'";
+        }
+       
+        public static string deleteProductLineItems(string itemCode)
+        {
+            return "DELETE * FROM LineItems WHERE ItemCode = '" + itemCode + "'";
+        }
+        public static string deleteProductItemDesc(string itemCode)
+        {
+            return "DELETE * FROM ItemDesc WHERE ItemCode = '" + itemCode + "'";
         }
         #endregion
         #region LineItem
-    
+
         public static string getLineItems()
         {
             return "SELECT * FROM LineItems";

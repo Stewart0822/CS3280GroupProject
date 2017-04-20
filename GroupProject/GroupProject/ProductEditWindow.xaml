@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="Edit Product" Height="300" Width="300">
     <Grid>
-        <TextBox x:Name="txtEditId" HorizontalAlignment="Left" Height="23" Margin="26,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239"/>
-        <TextBox x:Name="txtEditDesc" HorizontalAlignment="Left" Height="23" Margin="26,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239"/>
-        <TextBox x:Name="txtEditPrice" HorizontalAlignment="Left" Height="23" Margin="26,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239"/>
-        <Label x:Name="lblEditId" Content="ID #" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblEditDesc" Content="Description" HorizontalAlignment="Left" Margin="26,70,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblEditPrice" Content="Price" HorizontalAlignment="Left" Margin="26,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.53,0.438"/>
+        <TextBox x:Name="txtEditId" IsReadOnly="true" HorizontalAlignment="Left" Height="23" Margin="26,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239"/>
+        <TextBox x:Name="txtEditDesc" HorizontalAlignment="Left" Height="23" Margin="26,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239" AutomationProperties.IsRequiredForForm="True" IsReadOnlyCaretVisible="True"/>
+        <TextBox x:Name="txtEditPrice"  HorizontalAlignment="Left" Height="23" Margin="26,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239" AutomationProperties.IsRequiredForForm="True"/>
+        <Label x:Name="lblEditId" Content="Item Code:&#xD;&#xA;" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" AutomationProperties.IsRequiredForForm="True"/>
+        <Label x:Name="lblEditDesc" Content="Description:" HorizontalAlignment="Left" Margin="26,70,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblEditPrice" Content="Price:" HorizontalAlignment="Left" Margin="26,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.53,0.438"/>
         <Button x:Name="btnEditSubmit" Content="Submit" HorizontalAlignment="Left" Margin="46,193,0,0" VerticalAlignment="Top" Width="75" Click="btnEditSubmit_Click"/>
-        <Button x:Name="btnEditCancel" Content="Cancel" HorizontalAlignment="Left" Margin="168,193,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnEditCancel" Content="Cancel" HorizontalAlignment="Left" Margin="168,193,0,0" VerticalAlignment="Top" Width="75" Click="btnEditCancel_Click"/>
     </Grid>
 </Window>

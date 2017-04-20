@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace GroupProject
 {
     public static class BusCtrl
@@ -14,9 +15,15 @@ namespace GroupProject
         /// <summary>
         /// Static dataaccess to access db
         /// </summary>
-        private static Assignment6AirlineReservation.DataAccess dataAccess = new Assignment6AirlineReservation.DataAccess();
+        private static DataAccessPoint.DataAccess dataAccess = new DataAccessPoint.DataAccess();
+        
+        
         //----------------------Product stuff------------------------
 
+        public static void getProductList()
+        {
+
+        }
 
         public static List<Product> getProductsByInvoice(int invoiceID)
         {
@@ -28,19 +35,50 @@ namespace GroupProject
             return null;
         }
 
-        public static void addProduct(string name, string description, double amount)
+        public static void addProduct(string sItemCode, string sItemDesc, string sCost)
         {
-
+            dataAccess.ExecuteNonQuery(SQLStrings.insertProduct(sItemCode, sItemDesc, sCost));
+            Console.WriteLine("Data was inserted");
         }
-
-        public static void updateProduct(Product p)
+        /// <summary>
+        /// Updated items in ItemDesc based on ItemCode
+        /// </summary>
+        /// <param name="sItemCode"></param>
+        /// <param name="sItemDesc"></param>
+        /// <param name="sCost"></param>
+        public static void updateProductItemDesc(string sItemCode, string sItemDesc, string sCost)
         {
-
+            dataAccess.ExecuteNonQuery(SQLStrings.updateProductItemDesc(sItemCode, sItemDesc, sCost));
         }
-
-        public static void deleteProduct(int productID)
+        /// <summary>
+        /// Deletes items form LineItems based on ItemCode
+        /// </summary>
+        /// <param name="itemCode"></param>
+        public static void deleteProductLineItem(string itemCode)
         {
-
+            dataAccess.ExecuteNonQuery(SQLStrings.deleteProductLineItems(itemCode));
+        }
+        /// <summary>
+        /// Deletes items form ItemDesc based on ItemCode
+        /// </summary>
+        /// <param name="itemCode"></param>
+        public static void deleteProductItemDesc(string itemCode)
+        {
+            dataAccess.ExecuteNonQuery(SQLStrings.deleteProductItemDesc(itemCode));
+        }
+        /// <summary>
+        /// Checks to see it ItemCode already exists in database returns bool
+        /// </summary>
+        /// <param name="ItemCode"></param>
+        /// <returns></returns>
+        public static bool canInsert(string ItemCode)
+        {
+            int iRowCount = 0;
+            dataAccess.ExecuteSQLStatement(SQLStrings.checkProductExists(ItemCode) , ref iRowCount);
+            if (iRowCount > 0)
+                return false;
+            else
+                return true;
         }
 
         #region Search Methods
@@ -264,3 +302,14 @@ namespace GroupProject
         }
     }
 }
+
+        /// <summary>
+        /// returns a DataSet of all item from the ItemDesc table
+        /// </summary>
+        /// <param name="iRowCount"></param>
+        /// <returns></returns>
+        public static DataSet getProductDataSet(ref int iRowCount)
+        {
+            DataSet ds = new DataSet();
+            return ds = dataAccess.ExecuteSQLStatement(SQLStrings.getAllProducts(), ref iRowCount);            
+        }
