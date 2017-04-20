@@ -25,7 +25,10 @@ namespace GroupProject
         {
             return "SELECT * FROM Invoices WHERE InvoiceDate = #" + date + "#";
         }
-        
+        public static string getInvoice(string date, double total)
+        {
+            return "SELECT * FROM Invoices WHERE InvoiceDate = #" + date + "# AND TotalCharge = " + total;
+        }
         #endregion
         #region InvoiceCommands
         public static string insertInvoice(string date, double total)
@@ -67,11 +70,11 @@ namespace GroupProject
         }
         public static string getLineItemsForInvoice(int invoiceId)
         {
-            return "SELECT * FROM LineItems WHERE InvoiceNum = " + invoiceId;
+            return "SELECT LI.InvoiceNum, LI.ItemCode, ID.ItemDesc, ID.Cost FROM LineItems LI INNER JOIN ItemDesc ID ON LI.ItemCode = ID.ItemCode  WHERE InvoiceNum = " + invoiceId;
         }
-        public static string insertLineItem(int invoiceId, string ItemCode, int LineNumber)
+        public static string insertLineItem(int invoiceId, string ItemCode)
         {
-            return "INSERT INTO LineItems(invoiceNum,LineItemNum,ItemCode) VALUES (" + invoiceId + "," + LineNumber + ",'" + ItemCode + "')";
+            return "INSERT INTO LineItems(invoiceNum,ItemCode) VALUES (" + invoiceId  + ",'" + ItemCode + "')";
         }
         public static string removeLineItem(int lineNumber)
         {
