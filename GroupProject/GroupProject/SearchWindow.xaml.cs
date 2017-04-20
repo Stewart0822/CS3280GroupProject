@@ -57,6 +57,9 @@ namespace GroupProject
         private void btnClearFilters_Click(object sender, RoutedEventArgs e)
         {
             //Reset all search filters to blank.
+            cbIDNumber.SelectedIndex = -1;
+            dpInvoiceDate.SelectedDate = null;
+            cbInvoiceTotal.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -67,6 +70,7 @@ namespace GroupProject
         private void cbIDNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Update the DataGrid displaying invoices.
+            updateResultsGrid();
         }
 
         /// <summary>
@@ -77,6 +81,7 @@ namespace GroupProject
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             //Update the DataGrid displaying invoices.
+            updateResultsGrid();
         }
 
         /// <summary>
@@ -87,6 +92,7 @@ namespace GroupProject
         private void cbInvoiceTotal_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Update the DataGrid displaying invoices.
+            updateResultsGrid();
         }
 
         public new int ShowDialog()
@@ -98,25 +104,12 @@ namespace GroupProject
         private void updateResultsGrid()
         {
             //Set search variables
-            int invoiceID;
-            DateTime invoiceDate;
-            double invoiceCharge;
-
-            if (cbIDNumber.SelectedIndex != -1)
-            {
-                invoiceID = (int)cbIDNumber.SelectedItem;
-            }
-
-            //invoiceDate = dpInvoiceDate.SelectedDate;
-
-            if (cbInvoiceTotal.SelectedIndex != -1)
-            {
-                invoiceCharge = (int)cbInvoiceTotal.SelectedItem;
-            }
-
+            int invoiceID = cbIDNumber.SelectedIndex == -1 ? cbIDNumber.SelectedIndex : (int)cbIDNumber.SelectedItem;
+            DateTime? invoiceDate = dpInvoiceDate.SelectedDate;
+            double invoiceCharge = cbInvoiceTotal.SelectedIndex == -1 ? cbInvoiceTotal.SelectedIndex : (double)cbInvoiceTotal.SelectedItem;
 
             //bind to results data grid
-            //dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge);
+            dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge).Tables[0].DefaultView;
         }
     }
 }

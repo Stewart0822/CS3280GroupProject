@@ -44,9 +44,62 @@ namespace GroupProject
 
         //---------------------Search stuff---------------------------
 
-        public static DataSet getInvoiceList(int id, DateTime date, double total)
+        public static DataSet getInvoiceList(int id, DateTime? date, double total)
         {
-            return null;
+            int numRows = 0;
+            string query = "";
+            if (id == -1)
+            {
+                if (date == null)
+                {
+                    if (total == -1.0)      //no id, no date, no total
+                    {
+                        return null;
+                    }
+                    else                    //no id, no date, total
+                    {
+                        query = SQLStrings.getInvoicesForTotal(total);
+                    }
+                }
+                else
+                {
+                    if (total == -1.0)      //no id, date, no total
+                    {
+                        query = SQLStrings.getInvoiceForDate(((DateTime)date).ToShortDateString());
+                    }
+                    else                    //no id, date, total
+                    {
+                        query = SQLStrings.getInvoice(((DateTime)date).ToShortDateString(), total);
+                    }
+                }
+            }
+            else
+            {
+                if (date == null)
+                {
+                    if (total == -1.0)      //id, no date, no total
+                    {
+                        query = SQLStrings.getInvoiceForId(id);
+                    }
+                    else                    //id, no date, total
+                    {
+                        query = SQLStrings.getInvoiceByIDTotal(id, total);
+                    }
+                }
+                else
+                {
+                    if (total == -1.0)      //id, date, no total
+                    {
+                        query = SQLStrings.getInvoiceByIDDate(id, ((DateTime)date).ToShortDateString());
+                    }
+                    else                    //id, date, total
+                    {
+                        query = SQLStrings.getInvoiceByIDDateTotal(id, ((DateTime)date).ToShortDateString(), total);
+                    }
+                }
+            }
+
+            return dataAccess.ExecuteSQLStatement(query, ref numRows);
         }
 
         //---------------------Main Window stuff----------------------

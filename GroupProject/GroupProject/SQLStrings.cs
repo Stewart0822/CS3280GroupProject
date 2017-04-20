@@ -29,6 +29,18 @@ namespace GroupProject
         {
             return "SELECT * FROM Invoices WHERE InvoiceDate = #" + date + "# AND TotalCharge = " + total;
         }
+        public static string getInvoiceByIDTotal(int id, double total)
+        {
+            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + "# AND TotalCharge = " + total;
+        }
+        public static string getInvoiceByIDDate(int id, string date)
+        {
+            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + " AND InvoiceDate = #" + date;
+        }
+        public static string getInvoiceByIDDateTotal(int id, string date, double total)
+        {
+            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + " AND InvoiceDate = #" + date + "# AND TotalCharge = " + total;
+        }
         #endregion
         #region InvoiceCommands
         public static string insertInvoice(string date, double total)
