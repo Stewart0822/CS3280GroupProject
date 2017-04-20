@@ -27,7 +27,7 @@ namespace GroupProject
         }
         public static string getInvoice(string date, double total)
         {
-            return "SELECT * FROM Invoices WHERE InvoiceDate = #" + date + " AND TotalCharge = " + total;
+            return "SELECT * FROM Invoices WHERE InvoiceDate = #" + date + "# AND TotalCharge = " + total;
         }
         public static string getInvoiceByIDTotal(int id, double total)
         {
@@ -35,11 +35,11 @@ namespace GroupProject
         }
         public static string getInvoiceByIDDate(int id, string date)
         {
-            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + " AND InvoiceDate = #" + date;
+            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + " AND InvoiceDate = #" + date +"#";
         }
         public static string getInvoiceByIDDateTotal(int id, string date, double total)
         {
-            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + " AND InvoiceDate = #" + date + " AND TotalCharge = " + total;
+            return "SELECT * FROM Invoices WHERE InvoiceNum = " + id + " AND InvoiceDate = #" + date + "# AND TotalCharge = " + total;
         }
         public static string getAllInvoiceIDs()
         {

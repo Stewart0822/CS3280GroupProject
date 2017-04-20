@@ -224,6 +224,7 @@ namespace GroupProject
         {
 
         }
+
         public static List<Product> getProductList()
         {
             int numRows = 0;
