@@ -108,6 +108,7 @@ namespace GroupProject
                 if (lookUpId == -1)
                     return;
                 CurrentInvoice = BusCtrl.getInvoiceByID(lookUpId);
+                showInvoiceInfo();
             }
             catch(Exception ex)
             {

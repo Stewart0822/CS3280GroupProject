@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,20 @@ namespace GroupProject
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
             //Close the window and make sure the selected invoice's ID# is returned to the Main Window.
+            if (dgResults == null)
+            {
+                invoiceID = -1;
+                return;
+            }
+
+            if (dgResults.SelectedIndex == -1)
+            {
+                invoiceID = -1;
+                return;
+            }
+
+            invoiceID = Int32.Parse(((DataRowView)dgResults.SelectedItem)[0].ToString());
+            Hide();
         }
 
         /// <summary>
@@ -110,8 +125,6 @@ namespace GroupProject
 
             //bind to results data grid
             dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge).Tables[0].DefaultView;
-
-            //test
         }
     }
 }
