@@ -9,6 +9,10 @@ namespace GroupProject
 {
     public static class BusCtrl
     {
+        /// <summary>
+        /// Static dataaccess to access db
+        /// </summary>
+        private static Assignment6AirlineReservation.DataAccess dataAccess = new Assignment6AirlineReservation.DataAccess();
         //----------------------Product stuff------------------------
 
         public static void getProductList()
@@ -52,6 +56,8 @@ namespace GroupProject
 
         public static Invoice getInvoiceByID(int id)
         {
+            int numRows = 0;
+            //DataSet dataAccess.ExecuteSQLStatement(SQLStrings.getInvoiceForId(id),ref numRows);
             return null;
         }
 
