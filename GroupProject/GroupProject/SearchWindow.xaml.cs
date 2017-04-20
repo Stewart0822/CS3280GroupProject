@@ -40,7 +40,7 @@ namespace GroupProject
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
             //Close the window and make sure the selected invoice's ID# is returned to the Main Window.
-            if (dgResults == null)
+            if (dgResults == null )
             {
                 invoiceID = -1;
                 return;
