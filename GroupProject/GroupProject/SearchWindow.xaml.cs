@@ -107,7 +107,7 @@ namespace GroupProject
                 invoiceID = (int)cbIDNumber.SelectedItem;
             }
 
-            invoiceDate = dpInvoiceDate.SelectedDate;
+            //invoiceDate = dpInvoiceDate.SelectedDate;
 
             if (cbInvoiceTotal.SelectedIndex != -1)
             {
@@ -116,7 +116,7 @@ namespace GroupProject
 
 
             //bind to results data grid
-            dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge);
+            //dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge);
         }
     }
 }
