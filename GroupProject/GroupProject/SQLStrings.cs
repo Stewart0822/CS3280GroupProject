@@ -25,6 +25,7 @@ namespace GroupProject
         {
             return "SELECT * FROM Invoices WHERE InvoiceDate = #" + date + "#";
         }
+        
         #endregion
         #region InvoiceCommands
         public static string insertInvoice(string date, double total)
@@ -34,6 +35,10 @@ namespace GroupProject
         public static string updateInvoice(int id, string date, double total)
         {
             return "UPDATE invoices SET InvoiceDate = #" + date + "#, TotalCharge = " + total + " WHERE InvoiceNum = " + id;
+        }
+        public static string deleteInvoice(int id)
+        {
+            return "DELETE FROM Invoices WHERE InvoiceNum = " + id;
         }
         #endregion
         #region Product
@@ -49,7 +54,13 @@ namespace GroupProject
         {
             return "UPDATE itemDesc SET ItemDesc = '" + ItemDesc + "', Cost = " + itemCost + ")";
         }
+        public static string deleteProduct(string itemCode)
+        {
+            return "DELETE FROM ItemDesc WHERE ItemCode = '" + itemCode + "'";
+        }
         #endregion
+        #region LineItem
+    
         public static string getLineItems()
         {
             return "SELECT * FROM LineItems";
@@ -62,5 +73,14 @@ namespace GroupProject
         {
             return "INSERT INTO LineItems(invoiceNum,LineItemNum,ItemCode) VALUES (" + invoiceId + "," + LineNumber + ",'" + ItemCode + "')";
         }
+        public static string removeLineItem(int lineNumber)
+        {
+            return "DELETEE FROM LineItems WHERE LineItemNumber = " + lineNumber;
+        }
+        public static string removeLineItems(int invoiceId)
+        {
+            return "DELETE FROM LineItems WHERE InvoiceNum = " + invoiceId;
+        }
+        #endregion
     }
 }
