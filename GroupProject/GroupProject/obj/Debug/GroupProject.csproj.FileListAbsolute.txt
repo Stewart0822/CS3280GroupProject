@@ -94,3 +94,4 @@ C:\Users\npreszler\Documents\Spring 2017\CS 3280C#\Assignments\GroupProject\Grou
 C:\Users\npreszler\Documents\Spring 2017\CS 3280C#\Assignments\GroupProject\GroupProject\GroupProject\obj\Debug\ProductWindow.baml
 C:\Users\npreszler\Documents\Spring 2017\CS 3280C#\Assignments\GroupProject\GroupProject\GroupProject\obj\Debug\ProductAddWindow.baml
 C:\Users\npreszler\Documents\Spring 2017\CS 3280C#\Assignments\GroupProject\GroupProject\GroupProject\obj\Debug\ProductEditWindow.baml
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config

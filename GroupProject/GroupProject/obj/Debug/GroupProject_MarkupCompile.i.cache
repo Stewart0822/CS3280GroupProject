@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-D:\Workspace\CS3280GroupProject\GroupProject\GroupProject\obj\Debug\
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\obj\Debug\
 GroupProject
 none
 false
 DEBUG;TRACE
-D:\Workspace\CS3280GroupProject\GroupProject\GroupProject\App.xaml
+E:\School\CS3280C#\GroupProject\GroupProject\GroupProject\App.xaml
 5-1561167085
 
-181232843206
+18275725260
 13738642453
 MainWindow.xaml;ProductWindow.xaml;ProductAddWindow.xaml;ProductEditWindow.xaml;SearchWindow.xaml;
 

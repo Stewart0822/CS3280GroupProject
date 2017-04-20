@@ -110,6 +110,8 @@ namespace GroupProject
 
             //bind to results data grid
             dgResults.ItemsSource = BusCtrl.getInvoiceList(invoiceID, invoiceDate, invoiceCharge).Tables[0].DefaultView;
+
+            //test
         }
     }
 }
