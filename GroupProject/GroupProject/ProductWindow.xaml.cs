@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,20 +21,22 @@ namespace GroupProject
     /// </summary>
     public partial class ProductWindow : Window
     {
-        /// <summary>
-        /// New window that that allows user to enter data for new product item
-        /// </summary>
-        Window wndAddProduct;
-        /// <summary>
-        /// New window that that allows user to edit data for a product item
-        /// </summary>
-        Window wndEditProduct;
-
+        ///// <summary>
+        ///// New window that that allows user to enter data for new product item
+        ///// </summary>
+        int iRowCount;
         public ProductWindow()
         {
             InitializeComponent();
-            wndAddProduct = new ProductAddWindow();
-            wndEditProduct = new ProductEditWindow();
+            iRowCount = 0;
+            btnProdEdt.IsEnabled = false;
+            btnProdDel.IsEnabled = false;
+            loadDataGrid();
+        }
+
+        public void loadDataGrid()
+        {
+            dgProduct.ItemsSource = new DataView(BusCtrl.getProductDataSet(ref iRowCount).Tables[0]);
         }
 
         /// <summary>
@@ -42,7 +46,8 @@ namespace GroupProject
         /// <param name="e"></param>
         private void btnProdAdd_Click(object sender, RoutedEventArgs e)
         {
-            wndAddProduct.ShowDialog();
+            new ProductAddWindow().ShowDialog();
+            loadDataGrid();
         }
 
         /// <summary>
@@ -52,18 +57,45 @@ namespace GroupProject
         /// <param name="e"></param>
         private void btnProdEdt_Click(object sender, RoutedEventArgs e)
         {
-            wndEditProduct.ShowDialog();
+            
+            string sItemCode = ((DataRowView)dgProduct.SelectedItem)[0].ToString();
+            string sItemDesc = ((DataRowView)dgProduct.SelectedItem)[1].ToString();
+            string sCost = ((DataRowView)dgProduct.SelectedItem)[2].ToString();
+            new ProductEditWindow(sItemCode, sItemDesc, sCost).ShowDialog();
+            loadDataGrid();
             //This window's text fields will also be auto populated with the data selected in the dataGrid
         }
 
         /// <summary>
-        /// Deletes the current selection in the dataGrid
+        /// Deletes the current selection in the dataGrid from DB and refreshes the DataGrid
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnProdDel_Click(object sender, RoutedEventArgs e)
         {
-            //This will DELETE the current selections from the dataGrid/Database
+            if (MessageBox.Show("Are you sure you want to DELETE this item?", "Question", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            {
+                return;
+            }
+            else
+            {
+                string sItemCode = ((DataRowView)dgProduct.SelectedItem)[0].ToString();
+                BusCtrl.deleteProductLineItem(sItemCode);
+                BusCtrl.deleteProductItemDesc(sItemCode);
+                loadDataGrid();
+            }
+
+        }
+
+        /// <summary>
+        /// Enables button options if selection is made
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnProdEdt.IsEnabled = true;
+            btnProdDel.IsEnabled = true;
         }
     }
 }

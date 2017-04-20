@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Data.OleDb;
 using System.Reflection;
+using GroupProject;
 
-namespace Assignment6AirlineReservation
+namespace DataAccessPoint
 {
     class DataAccess
     {
@@ -65,7 +66,7 @@ namespace Assignment6AirlineReservation
             }
             catch (Exception ex)
             {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+                throw new Exception(MethodBase.GetCurrentMethod().DeclaringType.Name + "." + MethodBase.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
 
@@ -113,7 +114,7 @@ namespace Assignment6AirlineReservation
             }
             catch (Exception ex)
             {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+                throw new Exception(MethodBase.GetCurrentMethod().DeclaringType.Name + "." + MethodBase.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
 
@@ -147,8 +148,10 @@ namespace Assignment6AirlineReservation
             }
             catch (Exception ex)
             {
-                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+                throw new Exception(MethodBase.GetCurrentMethod().DeclaringType.Name + "." + MethodBase.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
+
+        
     }
 }

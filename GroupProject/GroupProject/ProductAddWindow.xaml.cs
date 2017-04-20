@@ -19,14 +19,54 @@ namespace GroupProject
     /// </summary>
     public partial class ProductAddWindow : Window
     {
+        /// <summary>
+        /// Initializes the window
+        /// </summary>
         public ProductAddWindow()
         {
             InitializeComponent();
+            
         }
 
+        /// <summary>
+        /// Inserts the new item into the DataBase
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddSubmit_Click(object sender, RoutedEventArgs e)
         {
-            //On submit the data in the text field will be saved to the database and given an _id
+            double num;
+            if (txtAddId.Text == "" || txtAddDesc.Text == "" || txtAddPrice.Text == "")
+            {
+                MessageBox.Show("All fields must contain a value.", "Alert", MessageBoxButton.OK);
+            }
+            else if(! double.TryParse(txtAddPrice.Text, out num))
+            {
+                MessageBox.Show("Price must only contain numbers and decimals.", "Alert", MessageBoxButton.OK);
+            }
+            else
+            {
+                if (BusCtrl.canInsert(txtAddId.Text))
+                {
+                    BusCtrl.addProduct(txtAddId.Text, txtAddDesc.Text, txtAddPrice.Text);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("ItemCode alredy exists, try again", "Alert", MessageBoxButton.OK);
+                }
+            }
+                        
         }
+        /// <summary>
+        /// Closes the window on cancel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
