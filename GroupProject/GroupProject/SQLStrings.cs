@@ -95,7 +95,7 @@ namespace GroupProject
         }
 
         /// <summary>
-        /// Creates a SQL query to return all inovice numbers from the Invoices table.
+        /// Creates a SQL query to return all invoice numbers from the Invoices table.
         /// </summary>
         /// <returns>A SQL query</returns>
         public static string getAllInvoiceIDs()
@@ -104,12 +104,21 @@ namespace GroupProject
         }
 
         /// <summary>
-        /// Creates a SQL query to return all inovice totals from the Invoices table.
+        /// Creates a SQL query to return all invoice totals from the Invoices table.
         /// </summary>
         /// <returns>A SQL query</returns>
         public static string getAllInvoiceTotals()
         {
             return "SELECT TotalCharge FROM Invoices";
+        }
+
+        /// <summary>
+        /// Creates a SQL query to return the newest invoice from the Invoices table.
+        /// </summary>
+        /// <returns></returns>
+        public static string getNewInvoice()
+        {
+            return "Select MAX(InvoiceNum) FROM Invoices";
         }
 
         #endregion
