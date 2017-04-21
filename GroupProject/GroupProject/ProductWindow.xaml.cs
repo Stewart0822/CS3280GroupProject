@@ -79,9 +79,31 @@ namespace GroupProject
             }
             else
             {
+                //get product code
                 string sItemCode = ((DataRowView)dgProduct.SelectedItem)[0].ToString();
+
+                //get list of products currently in use
+                List<string> prodsInUse = BusCtrl.getAllProductsInUse();
+
+                //if selected product is in use, don't delete
+                if (prodsInUse.Contains(sItemCode))
+                {
+                    //display modal with invoices using the product
+                    List<int> invoicesIDs = BusCtrl.getAllInvoiceIDsByProduct(sItemCode);
+                    string errorMessage = "";
+                    foreach (int i in invoicesIDs)
+                    {
+                        errorMessage += i + " ";
+                    }
+                    MessageBox.Show("Item cannot be deleted. In use by InvoiceID(s): " + errorMessage, "Can't Delete Product", MessageBoxButton.OK);
+                    return;
+                }
+
+                //otherwise, delete it
                 BusCtrl.deleteProductLineItem(sItemCode);
                 BusCtrl.deleteProductItemDesc(sItemCode);
+
+                //refresh datagrid
                 loadDataGrid();
             }
 

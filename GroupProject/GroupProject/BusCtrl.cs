@@ -90,6 +90,38 @@ namespace GroupProject
             return ds = dataAccess.ExecuteSQLStatement(SQLStrings.getAllProducts(), ref iRowCount);
         }
 
+        public static List<string> getAllProductsInUse()
+        {
+            int numRows = 0;
+            DataSet ds = dataAccess.ExecuteSQLStatement(SQLStrings.getAllProductsInUse(), ref numRows);
+
+            List<string> list = new List<string>();
+
+            for (int i = 0; i < numRows; i++)
+            {
+                string itemCode = ds.Tables[0].Rows[i][0].ToString();
+                list.Add(itemCode);
+            }
+
+            return list;
+        }
+
+        public static List<int> getAllInvoiceIDsByProduct(string productCode)
+        {
+            int numRows = 0;
+            DataSet ds = dataAccess.ExecuteSQLStatement(SQLStrings.getInvoiceIDsByProductCode(productCode), ref numRows);
+
+            List<int> list = new List<int>();
+
+            for (int i = 0; i < numRows; i++)
+            {
+                int invoiceNum = Int32.Parse(ds.Tables[0].Rows[i][0].ToString());
+                list.Add(invoiceNum);
+            }
+
+            return list;
+        }
+
         //--------------------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------End Product Methods-------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------------------------

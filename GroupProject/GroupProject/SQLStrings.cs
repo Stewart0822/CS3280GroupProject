@@ -90,6 +90,16 @@ namespace GroupProject
         {
             return "DELETE * FROM ItemDesc WHERE ItemCode = '" + itemCode + "'";
         }
+
+        public static string getAllProductsInUse()
+        {
+            return "SELECT DISTINCT ItemCode FROM LineItems";
+        }
+
+        public static string getInvoiceIDsByProductCode(string itemCode)
+        {
+            return "SELECT DISTINCT InvoiceNum FROM LineItems WHERE ItemCode = '" + itemCode + "'";
+        }
         #endregion
         #region LineItem
 
