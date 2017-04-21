@@ -49,6 +49,10 @@ namespace GroupProject
         {
             return "SELECT TotalCharge FROM Invoices";
         }
+        public static string getNewInvoice()
+        {
+            return "Select MAX(InvoiceNum) FROM Invoices";
+        }
         #endregion
         #region InvoiceCommands
         public static string insertInvoice(string date, double total)

@@ -44,7 +44,7 @@
                     <Button x:Name="btnAddProduct" Content="+" Margin="10,10,10,10" Grid.Column="1" Click="btnAddProduct_Click"/>
                 </Grid>
                 <Label x:Name="lblTotalCost" Content="Cost:" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,10,10"/>
-                <TextBox x:Name="txtTotalCost" Text="$450" VerticalAlignment="Center" Margin="10,10,10,10" Width="100" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left"/>
+                <TextBox IsReadOnly="True" x:Name="txtTotalCost" Text="$450" VerticalAlignment="Center" Margin="10,10,10,10" Width="100" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left"/>
 
             </Grid>
             <Grid Grid.Row="1">
@@ -66,7 +66,7 @@
                 <Button x:Name="btnSearch" Content="Search" Margin="5,10,5,10" VerticalAlignment="Center" Grid.Row="0" Grid.Column="3" Click="btn_search_click"/>
                 <Button x:Name="btnProducts" Content="Products" Margin="5,10,5,10" VerticalAlignment="Center" Grid.Row="0" Grid.Column="4" Click="btn_product_click"/>
                 <Button x:Name="btnClearForm" Content="Clear" Margin="5,10,5,10" VerticalAlignment="Center" Grid.Row="0" Grid.Column="5" Click="btnClear_Click"/>
-                <Label x:Name="lblStatus" Content="" Grid.ColumnSpan="6" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                <Label x:Name="lblStatus" Content="" Grid.Row="1" Grid.ColumnSpan="6" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
             </Grid>
         </Grid>
         <StackPanel x:Name="stackPanelInvoiceProducts" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,10,10,10" Grid.Column="1">

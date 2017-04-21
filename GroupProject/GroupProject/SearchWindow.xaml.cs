@@ -222,7 +222,7 @@ namespace GroupProject
         /// <param name="sClass">the class</param>
         /// <param name="sMethod">the method</param>
         /// <param name="sMessage">the error message</param>
-        static void HandleError(string sClass, string sMethod, string sMessage)
+        public static void HandleError(string sClass, string sMethod, string sMessage)
         {
             try
             {
