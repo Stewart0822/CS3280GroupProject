@@ -264,6 +264,7 @@ namespace GroupProject
                     product.ProductCode = row[1].ToString();
                     product.ProductDescription = row[2].ToString();
                     product.ProductCost = double.Parse(row[3].ToString());
+                    product.inDB = true;
                     totalCost += product.ProductCost;
                     products.Add(product);
                 }
@@ -284,12 +285,13 @@ namespace GroupProject
             foreach(Product product in invoiceProducts)
             {
                 invoiceTotal += product.ProductCost;
-                dataAccess.ExecuteNonQuery(SQLStrings.insertLineItem(i.ID, product.ProductCode));
+                if(!product.inDB)
+                    dataAccess.ExecuteNonQuery(SQLStrings.insertLineItem(i.ID, product.ProductCode));
             }
             dataAccess.ExecuteNonQuery(SQLStrings.updateInvoice(i.ID, i.Date.ToShortDateString(), invoiceTotal));
         }
 
-        public static void addInvoice(DateTime date, List<Product> prodList)
+        public static int addInvoice(DateTime date, List<Product> prodList)
         {
             double invoiceTotal = 0;
             foreach(Product p in prodList)
@@ -302,11 +304,13 @@ namespace GroupProject
             {
                 dataAccess.ExecuteNonQuery(SQLStrings.insertLineItem(newId, p.ProductCode));
             }
+            return newId;
         }
 
         public static void deleteInvoice(int id)
         {
-
+            dataAccess.ExecuteNonQuery(SQLStrings.removeLineItems(id));
+            dataAccess.ExecuteNonQuery(SQLStrings.deleteInvoice(id));
         }
 
         public static List<Product> getProductList()

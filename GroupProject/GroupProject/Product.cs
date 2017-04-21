@@ -11,6 +11,7 @@ namespace GroupProject
         private string _product_code;
         private string _product_description;
         private double _product_cost;
+        public Boolean inDB;
 
         public string ProductCode
         {
