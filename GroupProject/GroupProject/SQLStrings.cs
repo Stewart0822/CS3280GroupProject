@@ -282,6 +282,12 @@ namespace GroupProject
         {
             return "DELETE FROM LineItems WHERE InvoiceNum = " + invoiceId;
         }
+
+        public static string removeLineItem(int invoiceId, string itemCode)
+        {
+            return "DELETE FROM LineItems WHERE  LineItemNum = (SELECT TOP 1 LineItemNum FROM LineItems WHERE InvoiceNum = " + invoiceId + " AND ItemCode = '" + itemCode + "')";
+        }
         #endregion
+        
     }
 }

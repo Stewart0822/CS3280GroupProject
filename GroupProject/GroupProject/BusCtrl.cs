@@ -324,18 +324,33 @@ namespace GroupProject
         /// <summary>
         /// Updates an invoice in the database to have all the given products attached to it.
         /// </summary>
-        /// <param name="i">The invoice ID number</param>
+        /// <param name="invoice">The invoice ID number</param>
         /// <param name="invoiceProducts">The products to attach to the invoice</param>
-        public static void updateInvoice(Invoice i, List<Product> invoiceProducts)
+        public static void updateInvoice(Invoice invoice, List<Product> invoiceProducts)
         {
-            double invoiceTotal = 0;
-            foreach(Product product in invoiceProducts)
+            try
             {
-                invoiceTotal += product.ProductCost;
-                if(!product.inDB)
-                    dataAccess.ExecuteNonQuery(SQLStrings.insertLineItem(i.ID, product.ProductCode));
+                double invoiceTotal = 0;
+                foreach(Product product in invoiceProducts)
+                {
+                    if (product.needDeleted)
+                    {
+                        dataAccess.ExecuteNonQuery(SQLStrings.removeLineItem(invoice.ID, product.ProductCode));
+                        continue;
+                    }
+                    invoiceTotal += product.ProductCost;
+                    if(!product.inDB)
+                        dataAccess.ExecuteNonQuery(SQLStrings.insertLineItem(invoice.ID, product.ProductCode));
+                }
+                dataAccess.ExecuteNonQuery(SQLStrings.updateInvoice(invoice.ID, invoice.Date.ToShortDateString(), invoiceTotal));
             }
-            dataAccess.ExecuteNonQuery(SQLStrings.updateInvoice(i.ID, i.Date.ToShortDateString(), invoiceTotal));
+            catch(Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + ":" +
+                        MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
+            }
+
+
         }
 
         /// <summary>
@@ -349,13 +364,15 @@ namespace GroupProject
             double invoiceTotal = 0;
             foreach(Product p in prodList)
             {
-                invoiceTotal += p.ProductCost;
+                if(!p.needDeleted)
+                    invoiceTotal += p.ProductCost;
             }
             dataAccess.ExecuteNonQuery(SQLStrings.insertInvoice(date.ToShortDateString(), invoiceTotal));
             int newId = int.Parse(dataAccess.ExecuteScalarSQL(SQLStrings.getNewInvoice()));
             foreach(Product p in prodList)
             {
-                dataAccess.ExecuteNonQuery(SQLStrings.insertLineItem(newId, p.ProductCode));
+                if(!p.needDeleted)
+                    dataAccess.ExecuteNonQuery(SQLStrings.insertLineItem(newId, p.ProductCode));
             }
             return newId;
         }

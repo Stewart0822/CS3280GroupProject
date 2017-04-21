@@ -49,13 +49,13 @@ namespace GroupProject
                 DatePickerDate.SelectedDate = CurrentInvoice.Date;
                 stackPanelInvoiceProducts.Children.Clear();
                 double totalCost = 0;
-                foreach (var product in CurrentInvoice.products)
+                foreach (var product in CurrentInvoice.products.Where(pr => pr.needDeleted == false))
                 {
                     ColumnDefinition productName = new ColumnDefinition();
                     ColumnDefinition productCost = new ColumnDefinition();
                     ColumnDefinition removeProduct = new ColumnDefinition();
                     Grid productGrid = new Grid();
-                    productName.Width = new GridLength(4, GridUnitType.Star);
+                    productName.Width = new GridLength(7, GridUnitType.Star);
                     productCost.Width = new GridLength(2, GridUnitType.Star);
                     removeProduct.Width = new GridLength(1, GridUnitType.Star);
 
@@ -67,6 +67,11 @@ namespace GroupProject
                     Label lblProductCost = new Label() { Content = product.ProductCost };
                     Button btnDeleteProduct = new Button() { Content = "X" };
 
+                    //btnDeleteProduct.Margin = new Thickness(10);
+                    btnDeleteProduct.Tag = product;
+                    btnDeleteProduct.Click += new RoutedEventHandler(btnRemoveProduct_Click);
+                   
+
                     Grid.SetColumn(lblProductDesc, 0);
                     Grid.SetColumn(lblProductCost, 1);
                     Grid.SetColumn(btnDeleteProduct, 2);
@@ -74,6 +79,20 @@ namespace GroupProject
                     productGrid.Children.Add(lblProductDesc);
                     productGrid.Children.Add(lblProductCost);
                     productGrid.Children.Add(btnDeleteProduct);
+
+                    foreach(UIElement element in productGrid.Children)
+                    {
+                        Thickness margin = new Thickness(10);
+                        Label label = element as Label;
+                        if(element is Button)
+                        {
+                            ((Button)element).Margin = margin;
+                        }
+                        if(label != null)
+                        {
+                            label.Margin = margin;
+                        }
+                    }
 
                     stackPanelInvoiceProducts.Children.Add(productGrid);
                     totalCost += product.ProductCost;
@@ -190,7 +209,8 @@ namespace GroupProject
             }
             catch(Exception ex)
             {
-
+                SearchWindow.HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                    MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
             //update current invoice in db. This will proably be done by passing the relavant info into a manager class
 
@@ -213,6 +233,7 @@ namespace GroupProject
                 lblStatus.Content = "Invoice " + CurrentInvoice.ID + " Deleted";
                 txtInvoiceID.Text = "";
                 DatePickerDate.SelectedDate = null;
+                txtTotalCost.Text = "";
                 stackPanelInvoiceProducts.Children.Clear();
                 CurrentInvoice = new Invoice();
             }
@@ -237,6 +258,7 @@ namespace GroupProject
                 DatePickerDate.SelectedDate = null;
                 stackPanelInvoiceProducts.Children.Clear();
                 comboProductSelect.SelectedIndex = -1;
+                txtTotalCost.Text = "";
                 CurrentInvoice = new Invoice();
             }
             catch(Exception ex)
@@ -257,7 +279,7 @@ namespace GroupProject
             {
                 if(comboProductSelect.SelectedItem is Product)
                 {
-                    CurrentInvoice.products.Add(comboProductSelect.SelectedItem as Product);
+                    CurrentInvoice.products.Add((comboProductSelect.SelectedItem as Product).Clone() as Product);
                     showInvoiceInfo();
                 }
             }
@@ -267,6 +289,18 @@ namespace GroupProject
                     MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
 
+        }
+
+        private void btnRemoveProduct_Click(object sender, RoutedEventArgs e)
+        {
+            int index = CurrentInvoice.products.IndexOf((sender as Button).Tag as Product);
+            if(CurrentInvoice.products[index].inDB)
+                CurrentInvoice.products[index].needDeleted = true;
+            else
+            {
+                CurrentInvoice.products.RemoveAt(index);
+            }
+            showInvoiceInfo();
         }
     }
 }
