@@ -8,7 +8,7 @@
         Title="Add Product" Height="300" Width="300">
     <Grid>
         <TextBox x:Name="txtAddId" HorizontalAlignment="Left" Height="23" Margin="26,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239"/>
-        <TextBox x:Name="txtAddDesc" HorizontalAlignment="Left" Height="23" Margin="26,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239"/>
+        <TextBox x:Name="txtAddDesc" HorizontalAlignment="Left" Height="23" Margin="26,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239" MaxLength="15"/>
         <TextBox x:Name="txtAddPrice" HorizontalAlignment="Left" Height="23" Margin="26,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="239"/>
         <Label x:Name="lblAddId" Content="ItemCode:" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblAddDesc" Content="Description:" HorizontalAlignment="Left" Margin="26,70,0,0" VerticalAlignment="Top"/>

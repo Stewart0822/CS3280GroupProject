@@ -45,7 +45,7 @@ namespace GroupProject
             {
                 if (CurrentInvoice == null)
                     return;
-                txtInvoiceID.Text = CurrentInvoice.ID.ToString();
+                txtInvoiceID.Text = CurrentInvoice.ID.ToString() == "0" ? "": CurrentInvoice.ID.ToString();
                 DatePickerDate.SelectedDate = CurrentInvoice.Date;
                 stackPanelInvoiceProducts.Children.Clear();
                 double totalCost = 0;
@@ -61,7 +61,7 @@ namespace GroupProject
 
                     productGrid.ColumnDefinitions.Add(productName);
                     productGrid.ColumnDefinitions.Add(productCost);
-                    //productGrid.ColumnDefinitions.Add(removeProduct);
+                    productGrid.ColumnDefinitions.Add(removeProduct);
 
                     Label lblProductDesc = new Label() { Content = product.ProductDescription };
                     Label lblProductCost = new Label() { Content = product.ProductCost };
@@ -69,11 +69,11 @@ namespace GroupProject
 
                     Grid.SetColumn(lblProductDesc, 0);
                     Grid.SetColumn(lblProductCost, 1);
-                    //Grid.SetColumn(btnDeleteInvoice, 2);
+                    Grid.SetColumn(btnDeleteProduct, 2);
 
                     productGrid.Children.Add(lblProductDesc);
                     productGrid.Children.Add(lblProductCost);
-                    // productGrid.Children.Add(btnDeleteInvoice);
+                    productGrid.Children.Add(btnDeleteProduct);
 
                     stackPanelInvoiceProducts.Children.Add(productGrid);
                     totalCost += product.ProductCost;
@@ -157,6 +157,11 @@ namespace GroupProject
         {
             try
             {
+                if(DatePickerDate.SelectedDate == null || CurrentInvoice.products.Count == 0 )
+                {
+                    lblStatus.Content = "Cannot add an empty invoice";
+                    return;
+                }
                 int newId = BusCtrl.addInvoice(DatePickerDate.SelectedDate.Value, CurrentInvoice.products);
                 //insert new invoiced data into the db. this will probably be done through a manager class to avoid work on the ui
                 lblStatus.Content = "Invoice #" + newId + " added";
@@ -231,6 +236,7 @@ namespace GroupProject
                 txtInvoiceID.Text = "";
                 DatePickerDate.SelectedDate = null;
                 stackPanelInvoiceProducts.Children.Clear();
+                comboProductSelect.SelectedIndex = -1;
                 CurrentInvoice = new Invoice();
             }
             catch(Exception ex)
