@@ -352,7 +352,7 @@ namespace GroupProject
                 invoiceTotal += p.ProductCost;
             }
             dataAccess.ExecuteNonQuery(SQLStrings.insertInvoice(date.ToShortDateString(), invoiceTotal));
-            int newId = int.Parse(dataAccess.ExecuteScalarSQL(SQLStrings.getInvoice(date.ToShortDateString(),invoiceTotal)));
+            int newId = int.Parse(dataAccess.ExecuteScalarSQL(SQLStrings.getNewInvoice()));
             foreach(Product p in prodList)
             {
                 dataAccess.ExecuteNonQuery(SQLStrings.insertLineItem(newId, p.ProductCode));

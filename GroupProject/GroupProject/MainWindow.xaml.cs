@@ -36,6 +36,9 @@ namespace GroupProject
             CurrentInvoice = new Invoice();
         }
 
+        /// <summary>
+        /// update ui to show invoice current invoice info
+        /// </summary>
         private void showInvoiceInfo()
         {
             try
@@ -83,7 +86,9 @@ namespace GroupProject
                      MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
             }
         }
-
+        /// <summary>
+        /// populate product drop down with data from db
+        /// </summary>
         private void populateProductDropdown()
         {
             comboProductSelect.Items.Clear();
@@ -128,10 +133,19 @@ namespace GroupProject
         /// <param name="e">The RoutedEventArgs.</param>
         private void btn_product_click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                new ProductWindow().ShowDialog();
+                populateProductDropdown();
+            }catch(Exception ex)
+            {
+                SearchWindow.HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                    MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
             //no data will need to be passed between these two objects, but both should have access to the static manger
             //class that will hold the datastructures with the invoice and product data as well as 
             //comunicate with the db class
-            new ProductWindow().ShowDialog();
+            
         }
 
         /// <summary>
@@ -151,7 +165,8 @@ namespace GroupProject
             }
             catch(Exception ex)
             {
-
+                SearchWindow.HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                    MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
 
         }
@@ -185,29 +200,67 @@ namespace GroupProject
         {
             try
             {
+                if(CurrentInvoice.ID == null)
+                {
+                    return;
+                }
                 BusCtrl.deleteInvoice(CurrentInvoice.ID);
                 lblStatus.Content = "Invoice " + CurrentInvoice.ID + " Deleted";
+                txtInvoiceID.Text = "";
+                DatePickerDate.SelectedDate = null;
+                stackPanelInvoiceProducts.Children.Clear();
+                CurrentInvoice = new Invoice();
             }
             catch(Exception ex)
             {
-                
+                SearchWindow.HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                    MethodInfo.GetCurrentMethod().Name,ex.Message);
             }
             //delete the current invoice. this will probalby be done in some object manager class that you pass the id
 
         }
-
+        /// <summary>
+        /// Clear the screen of invoice related data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            txtInvoiceID.Text = "";
-            DatePickerDate.SelectedDate = null;
-            stackPanelInvoiceProducts.Children.Clear();
-            CurrentInvoice = new Invoice();
-        }
+            try
+            {
+                txtInvoiceID.Text = "";
+                DatePickerDate.SelectedDate = null;
+                stackPanelInvoiceProducts.Children.Clear();
+                CurrentInvoice = new Invoice();
+            }
+            catch(Exception ex)
+            {
+                SearchWindow.HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                    MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
 
+        }
+        /// <summary>
+        /// add selected product to new product list and refresh UI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-            CurrentInvoice.products.Add(comboProductSelect.SelectedItem as Product);
-            showInvoiceInfo();
+            try
+            {
+                if(comboProductSelect.SelectedItem is Product)
+                {
+                    CurrentInvoice.products.Add(comboProductSelect.SelectedItem as Product);
+                    showInvoiceInfo();
+                }
+            }
+            catch(Exception ex)
+            {
+                SearchWindow.HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                    MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+
         }
     }
 }
