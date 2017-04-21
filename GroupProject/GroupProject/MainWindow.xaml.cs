@@ -23,7 +23,7 @@ namespace GroupProject
     {
         #region ClassVariables
         Invoice CurrentInvoice;
-        List<Product> currentProducts;
+        List<Product> newProducts;
         #endregion
 
         /// <summary>
@@ -45,12 +45,13 @@ namespace GroupProject
                 txtInvoiceID.Text = CurrentInvoice.ID.ToString();
                 DatePickerDate.SelectedDate = CurrentInvoice.Date;
                 stackPanelInvoiceProducts.Children.Clear();
+                double totalCost = 0;
                 foreach (var product in CurrentInvoice.products)
                 {
-                    Grid productGrid = new Grid();
                     ColumnDefinition productName = new ColumnDefinition();
                     ColumnDefinition productCost = new ColumnDefinition();
                     ColumnDefinition removeProduct = new ColumnDefinition();
+                    Grid productGrid = new Grid();
                     productName.Width = new GridLength(4, GridUnitType.Star);
                     productCost.Width = new GridLength(2, GridUnitType.Star);
                     removeProduct.Width = new GridLength(1, GridUnitType.Star);
@@ -65,14 +66,16 @@ namespace GroupProject
 
                     Grid.SetColumn(lblProductDesc, 0);
                     Grid.SetColumn(lblProductCost, 1);
-                    Grid.SetColumn(btnDeleteInvoice, 2);
+                    //Grid.SetColumn(btnDeleteInvoice, 2);
 
                     productGrid.Children.Add(lblProductDesc);
                     productGrid.Children.Add(lblProductCost);
                     // productGrid.Children.Add(btnDeleteInvoice);
 
                     stackPanelInvoiceProducts.Children.Add(productGrid);
+                    totalCost += product.ProductCost;
                 }
+                txtTotalCost.Text = "$" + totalCost;
             }
             catch(Exception ex)
             {
@@ -85,6 +88,7 @@ namespace GroupProject
             comboProductSelect.Items.Clear();
             foreach(Product product in BusCtrl.getProductList())
             {
+                product.inDB = false;
                 comboProductSelect.Items.Add(product);
             }
         }
@@ -136,8 +140,19 @@ namespace GroupProject
         /// <param name="e">The RoutedEventArgs.</param>
         private void btn_add_invoice_click(object sender, RoutedEventArgs e)
         {
-            BusCtrl.addInvoice(DatePickerDate.SelectedDate.Value, CurrentInvoice.products);
-            //insert new invoiced data into the db. this will probably be done through a manager class to avoid work on the ui
+            try
+            {
+                int newId = BusCtrl.addInvoice(DatePickerDate.SelectedDate.Value, CurrentInvoice.products);
+                //insert new invoiced data into the db. this will probably be done through a manager class to avoid work on the ui
+                lblStatus.Content = "Invoice #" + newId + " added";
+                CurrentInvoice = BusCtrl.getInvoiceByID(newId);
+                showInvoiceInfo();
+            }
+            catch(Exception ex)
+            {
+
+            }
+
         }
 
         /// <summary>
@@ -147,7 +162,17 @@ namespace GroupProject
         /// <param name="e">The RoutedEventArgs.</param>
         private void btn_edit_invoice_click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                BusCtrl.updateInvoice(CurrentInvoice, CurrentInvoice.products);
+                lblStatus.Content = "Updated Invoice " + CurrentInvoice.ID;
+            }
+            catch(Exception ex)
+            {
+
+            }
             //update current invoice in db. This will proably be done by passing the relavant info into a manager class
+
         }
 
         /// <summary>
@@ -157,7 +182,17 @@ namespace GroupProject
         /// <param name="e">The RoutedEventArgs.</param>
         private void btn_delete_invoice_click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                BusCtrl.deleteInvoice(CurrentInvoice.ID);
+                lblStatus.Content = "Invoice " + CurrentInvoice.ID + " Deleted";
+            }
+            catch(Exception ex)
+            {
+                
+            }
             //delete the current invoice. this will probalby be done in some object manager class that you pass the id
+
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
