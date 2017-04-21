@@ -19,16 +19,12 @@ namespace GroupProject
         //-----------------------------------------------------Begin Product Methods------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------------------------
 
-        public static List<Product> getProductsByInvoice(int invoiceID)
-        {
-            return null;
-        }
-
-        public static ProductWindow getProduct(int productID)
-        {
-            return null;
-        }
-
+        /// <summary>
+        /// Adds a product.
+        /// </summary>
+        /// <param name="sItemCode">The item code</param>
+        /// <param name="sItemDesc">The item description</param>
+        /// <param name="sCost">The item cost</param>
         public static void addProduct(string sItemCode, string sItemDesc, string sCost)
         {
             dataAccess.ExecuteNonQuery(SQLStrings.insertProduct(sItemCode, sItemDesc, sCost));
@@ -90,6 +86,10 @@ namespace GroupProject
             return ds = dataAccess.ExecuteSQLStatement(SQLStrings.getAllProducts(), ref iRowCount);
         }
 
+        /// <summary>
+        /// Gets all products codes attached to an invoice.
+        /// </summary>
+        /// <returns>A List of product codes</returns>
         public static List<string> getAllProductsInUse()
         {
             int numRows = 0;
@@ -106,6 +106,11 @@ namespace GroupProject
             return list;
         }
 
+        /// <summary>
+        /// Gets all invoice numbers for a given product code.
+        /// </summary>
+        /// <param name="productCode">The product code</param>
+        /// <returns>A List of invoice numbers</returns>
         public static List<int> getAllInvoiceIDsByProduct(string productCode)
         {
             int numRows = 0;
