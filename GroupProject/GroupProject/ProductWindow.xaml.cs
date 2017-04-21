@@ -34,6 +34,9 @@ namespace GroupProject
             loadDataGrid();
         }
 
+        /// <summary>
+        /// Refreshes the data grid of products.
+        /// </summary>
         public void loadDataGrid()
         {
             dgProduct.ItemsSource = new DataView(BusCtrl.getProductDataSet(ref iRowCount).Tables[0]);
