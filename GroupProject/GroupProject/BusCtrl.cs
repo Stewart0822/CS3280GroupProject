@@ -9,12 +9,15 @@ namespace GroupProject
     public static class BusCtrl
     {
         /// <summary>
-        /// Static dataaccess to access db
+        /// Static data access to access db
         /// </summary>
         private static DataAccess dataAccess = new DataAccess();
-        
-        
-        //----------------------Product stuff------------------------
+
+
+        #region Product Methods
+        //--------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------Begin Product Methods------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------
 
         public static List<Product> getProductsByInvoice(int invoiceID)
         {
@@ -87,6 +90,12 @@ namespace GroupProject
             return ds = dataAccess.ExecuteSQLStatement(SQLStrings.getAllProducts(), ref iRowCount);
         }
 
+        //--------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------End Product Methods-------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------
+        #endregion
+
+
         #region Search Methods
         //--------------------------------------------------------------------------------------------------------------------------------
         //-----------------------------------------------------Begin Search Methods-------------------------------------------------------
@@ -101,60 +110,67 @@ namespace GroupProject
         /// <returns>A DataSet of all invoices based on the search filters.</returns>
         public static DataSet getInvoiceList(int id, DateTime? date, double total)
         {
-            int numRows = 0;
-            string query = "";
-            if (id == -1)
+            try
             {
-                if (date == null)
+                int numRows = 0;
+                string query = "";
+                if (id == -1)
                 {
-                    if (total == -1.0)      //no id, no date, no total
+                    if (date == null)
                     {
-                        query = SQLStrings.getAllInvoices();
+                        if (total == -1.0)      //no id, no date, no total
+                        {
+                            query = SQLStrings.getAllInvoices();
+                        }
+                        else                    //no id, no date, total
+                        {
+                            query = SQLStrings.getInvoicesForTotal(total);
+                        }
                     }
-                    else                    //no id, no date, total
+                    else
                     {
-                        query = SQLStrings.getInvoicesForTotal(total);
+                        if (total == -1.0)      //no id, date, no total
+                        {
+                            query = SQLStrings.getInvoiceForDate(((DateTime)date).ToShortDateString());
+                        }
+                        else                    //no id, date, total
+                        {
+                            query = SQLStrings.getInvoice(((DateTime)date).ToShortDateString(), total);
+                        }
                     }
                 }
                 else
                 {
-                    if (total == -1.0)      //no id, date, no total
+                    if (date == null)
                     {
-                        query = SQLStrings.getInvoiceForDate(((DateTime)date).ToShortDateString());
+                        if (total == -1.0)      //id, no date, no total
+                        {
+                            query = SQLStrings.getInvoiceForId(id);
+                        }
+                        else                    //id, no date, total
+                        {
+                            query = SQLStrings.getInvoiceByIDTotal(id, total);
+                        }
                     }
-                    else                    //no id, date, total
+                    else
                     {
-                        query = SQLStrings.getInvoice(((DateTime)date).ToShortDateString(), total);
-                    }
-                }
-            }
-            else
-            {
-                if (date == null)
-                {
-                    if (total == -1.0)      //id, no date, no total
-                    {
-                        query = SQLStrings.getInvoiceForId(id);
-                    }
-                    else                    //id, no date, total
-                    {
-                        query = SQLStrings.getInvoiceByIDTotal(id, total);
-                    }
-                }
-                else
-                {
-                    if (total == -1.0)      //id, date, no total
-                    {
-                        query = SQLStrings.getInvoiceByIDDate(id, ((DateTime)date).ToShortDateString());
-                    }
-                    else                    //id, date, total
-                    {
-                        query = SQLStrings.getInvoiceByIDDateTotal(id, ((DateTime)date).ToShortDateString(), total);
+                        if (total == -1.0)      //id, date, no total
+                        {
+                            query = SQLStrings.getInvoiceByIDDate(id, ((DateTime)date).ToShortDateString());
+                        }
+                        else                    //id, date, total
+                        {
+                            query = SQLStrings.getInvoiceByIDDateTotal(id, ((DateTime)date).ToShortDateString(), total);
+                        }
                     }
                 }
-            }
 
-            return dataAccess.ExecuteSQLStatement(query, ref numRows);
+                return dataAccess.ExecuteSQLStatement(query, ref numRows);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
         }
 
         /// <summary>
@@ -179,9 +195,9 @@ namespace GroupProject
 
                 return list;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
 
@@ -218,7 +234,11 @@ namespace GroupProject
         //--------------------------------------------------------------------------------------------------------------------------------
         #endregion
 
-        //---------------------Main Window stuff----------------------
+
+        #region Main Window Methods
+        //--------------------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------Begin Main Window Methods-----------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------
 
         public static Invoice getInvoiceByID(int id)
         {
@@ -306,6 +326,11 @@ namespace GroupProject
             }
             return products;
         }
+
+        //--------------------------------------------------------------------------------------------------------------------------------
+        //---------------------------------------------------End Main Window Methods------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------
+        #endregion
     }
 }
 
