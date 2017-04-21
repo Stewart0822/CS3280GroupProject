@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccessPoint;
-using GroupProject;
 
 namespace GroupProject
 {
@@ -16,15 +11,10 @@ namespace GroupProject
         /// <summary>
         /// Static dataaccess to access db
         /// </summary>
-        private static DataAccessPoint.DataAccess dataAccess = new DataAccessPoint.DataAccess();
+        private static DataAccess dataAccess = new DataAccess();
         
         
         //----------------------Product stuff------------------------
-
-        //public static void getProductList()
-        //{
-
-        //}
 
         public static List<Product> getProductsByInvoice(int invoiceID)
         {
@@ -41,6 +31,7 @@ namespace GroupProject
             dataAccess.ExecuteNonQuery(SQLStrings.insertProduct(sItemCode, sItemDesc, sCost));
             Console.WriteLine("Data was inserted");
         }
+
         /// <summary>
         /// Updated items in ItemDesc based on ItemCode
         /// </summary>
@@ -51,6 +42,7 @@ namespace GroupProject
         {
             dataAccess.ExecuteNonQuery(SQLStrings.updateProductItemDesc(sItemCode, sItemDesc, sCost));
         }
+
         /// <summary>
         /// Deletes items form LineItems based on ItemCode
         /// </summary>
@@ -59,6 +51,7 @@ namespace GroupProject
         {
             dataAccess.ExecuteNonQuery(SQLStrings.deleteProductLineItems(itemCode));
         }
+
         /// <summary>
         /// Deletes items form ItemDesc based on ItemCode
         /// </summary>
@@ -67,6 +60,7 @@ namespace GroupProject
         {
             dataAccess.ExecuteNonQuery(SQLStrings.deleteProductItemDesc(itemCode));
         }
+
         /// <summary>
         /// Checks to see it ItemCode already exists in database returns bool
         /// </summary>
@@ -81,6 +75,7 @@ namespace GroupProject
             else
                 return true;
         }
+
         /// <summary>
         /// returns a DataSet of all item from the ItemDesc table
         /// </summary>

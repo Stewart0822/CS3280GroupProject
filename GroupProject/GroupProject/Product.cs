@@ -12,23 +12,24 @@ namespace GroupProject
         private string _product_description;
         private double _product_cost;
 
-        public void ProductCode()
+        public string ProductCode
         {
-            //get { return _product_code; }
-            //set { _product_code = value; }
+            get { return _product_code; }
+            set { _product_code = value; }
         }
 
-        public void ProductDescription()
+        public string ProductDescription
         {
-            //get { return _product_description; }
-            //set { _product_description = value; }
+            get { return _product_description; }
+            set { _product_description = value; }
         }
 
-        public void ProductCost()
+        public double ProductCost
         {
-            //get { return _product_cost; }
-            //set { _product_cost = value; }
+            get { return _product_cost; }
+            set { _product_cost = value; }
         }
+
         public override string ToString()
         {
             return _product_description + "($" + _product_cost + ")" ;

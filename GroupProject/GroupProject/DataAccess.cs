@@ -9,7 +9,7 @@ using System.Data.OleDb;
 using System.Reflection;
 using GroupProject;
 
-namespace DataAccessPoint
+namespace GroupProject
 {
     class DataAccess
     {
