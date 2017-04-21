@@ -55,7 +55,7 @@ namespace GroupProject
                     return;
                 }
 
-                invoiceID = Int32.Parse(((DataRowView)dgResults.SelectedItem)[0].ToString());
+                invoiceID = Int32.Parse(((DataRowView)dgResults.SelectedItem)["InvoiceNum"].ToString());
                 Hide();
             }
             catch (Exception ex)
