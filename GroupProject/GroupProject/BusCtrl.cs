@@ -277,6 +277,11 @@ namespace GroupProject
         //--------------------------------------------------Begin Main Window Methods-----------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// Gets the invoice with the given invoice number.
+        /// </summary>
+        /// <param name="id">The invoice number</param>
+        /// <returns>The invoice</returns>
         public static Invoice getInvoiceByID(int id)
         {
             try
@@ -316,6 +321,11 @@ namespace GroupProject
 
         }
 
+        /// <summary>
+        /// Updates an invoice in the database to have all the given products attached to it.
+        /// </summary>
+        /// <param name="i">The invoice ID number</param>
+        /// <param name="invoiceProducts">The products to attach to the invoice</param>
         public static void updateInvoice(Invoice i, List<Product> invoiceProducts)
         {
             double invoiceTotal = 0;
@@ -328,6 +338,12 @@ namespace GroupProject
             dataAccess.ExecuteNonQuery(SQLStrings.updateInvoice(i.ID, i.Date.ToShortDateString(), invoiceTotal));
         }
 
+        /// <summary>
+        /// Adds an ivoice to the database with the given products attached to it.
+        /// </summary>
+        /// <param name="date">The invoice date</param>
+        /// <param name="prodList">The products attached to the invoice</param>
+        /// <returns></returns>
         public static int addInvoice(DateTime date, List<Product> prodList)
         {
             double invoiceTotal = 0;
@@ -344,12 +360,20 @@ namespace GroupProject
             return newId;
         }
 
+        /// <summary>
+        /// Deletes an invoice.
+        /// </summary>
+        /// <param name="id">The invoice number of the invoice to be deleted</param>
         public static void deleteInvoice(int id)
         {
             dataAccess.ExecuteNonQuery(SQLStrings.removeLineItems(id));
             dataAccess.ExecuteNonQuery(SQLStrings.deleteInvoice(id));
         }
 
+        /// <summary>
+        /// Gets a list of all products.
+        /// </summary>
+        /// <returns>A list of all products.</returns>
         public static List<Product> getProductList()
         {
             int numRows = 0;

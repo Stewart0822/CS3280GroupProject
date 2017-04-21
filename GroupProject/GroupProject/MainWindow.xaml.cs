@@ -83,6 +83,7 @@ namespace GroupProject
                      MethodInfo.GetCurrentMethod().Name + "->" + ex.Message);
             }
         }
+
         private void populateProductDropdown()
         {
             comboProductSelect.Items.Clear();
