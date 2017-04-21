@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Product" Height="471.304" Width="698.261">
     <Grid>
-        <DataGrid x:Name="dgProduct" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Height="412" Width="567" SelectionChanged="dgProduct_SelectionChanged"/>
+        <DataGrid x:Name="dgProduct" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Height="412" Width="567" SelectionChanged="dgProduct_SelectionChanged" IsReadOnly="True"/>
         <Button x:Name="btnProdAdd" Content="Add" HorizontalAlignment="Left" Margin="595,75,0,0" VerticalAlignment="Top" Width="75" Click="btnProdAdd_Click"/>
         <Button x:Name="btnProdEdt" Content="Edit" HorizontalAlignment="Left" Margin="595,179,0,0" VerticalAlignment="Top" Width="75" Click="btnProdEdt_Click"/>
         <Button x:Name="btnProdDel" Content="Delete" HorizontalAlignment="Left" Margin="595,126,0,0" VerticalAlignment="Top" Width="75" Click="btnProdDel_Click"/>
