@@ -39,14 +39,20 @@ namespace GroupProject
         /// <param name="e"></param>
         private void btnEditSubmit_Click(object sender, RoutedEventArgs e)
         {
+
             double num;
+            bool parsed = double.TryParse(txtEditPrice.Text, out num);
             if (txtEditDesc.Text == "" || txtEditPrice.Text == "")
             {
-                MessageBox.Show("All fields must contain a value.", "Alert", MessageBoxButton.OK);
+                MessageBox.Show("All fields must contain a value.", "Missing Data Alert", MessageBoxButton.OK);
             }
-            else if (!double.TryParse(txtEditPrice.Text, out num))
+            else if(num < 0)
             {
-                MessageBox.Show("Price must only contain numbers and decimals.", "Alert", MessageBoxButton.OK);
+                MessageBox.Show("You can't enter a negative value for Price.", "Negative Value Alert", MessageBoxButton.OK);
+            }
+            else if (!parsed)
+            {
+                MessageBox.Show("Price must only contain numbers and decimals.", "Invalid Format Alert", MessageBoxButton.OK);
             }
             else
             {
